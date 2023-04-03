@@ -3,7 +3,7 @@
 ## **Operators**
 
 Take part in certain mathematical and data manipulative operations.
-<p align="center">
+<center>
 
 | Operator sign | Task of operator | Example |
 | ---------------|:--------------:| ---------------:|
@@ -13,7 +13,7 @@ Take part in certain mathematical and data manipulative operations.
 | / | Division | 300 / 20 = 15 |
 | % | Reamainder | 300 % 20 = 0 |
 
-</p>
+</center>
 
 **Operation observation**:
 
