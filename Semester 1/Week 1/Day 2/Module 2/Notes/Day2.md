@@ -1,6 +1,6 @@
 # **```Module 02```**
 
-<p align="center"><b><span style="font-size:18px;">Operators</span></b></p>
+## <p align="center"><b>Operators</b></p>
 
 Take part in certain mathematical and data manipulative operations.
 
@@ -14,7 +14,7 @@ Take part in certain mathematical and data manipulative operations.
 
 <ins>**Operands**</ins>: are the numbers, variables or any other instances in which the operators execute it operations
 
-<p align="center"><b>Operation observation</b></p>
+## <p align="center"><b>Operation observation</b></p>
 
 ### ```Integer data type```
 
