@@ -1,6 +1,6 @@
 # **```Module 02```**
 
-## **Operators**
+### **Operators**
 
 Take part in certain mathematical and data manipulative operations.
 
@@ -12,9 +12,9 @@ Take part in certain mathematical and data manipulative operations.
 | / | Division | 300 / 20 = 15 |
 | % | Reamainder | 300 % 20 = 0 |
 
-### **Operands**: are the numbers, variables or any other instances in which the operators execute it operations
+<ins>**Operands**</ins>: are the numbers, variables or any other instances in which the operators execute it operations
 
-## **Operation observation**
+<p align="center"><b>Operation observation</b></p>
 
 ### ```Integer data type```
 
