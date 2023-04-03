@@ -1,6 +1,6 @@
 # **```Module 02```**
 
-### **Operators**
+<p align="center"><b><span style="font-size:18px; text-decoration:underline;">Operators</span></b></p>
 
 Take part in certain mathematical and data manipulative operations.
 
@@ -14,7 +14,7 @@ Take part in certain mathematical and data manipulative operations.
 
 <ins>**Operands**</ins>: are the numbers, variables or any other instances in which the operators execute it operations
 
-<p align="center"><b>Operation observation</b></p>
+<p align="center"><b><span style="font-size:18px; text-decoration:underline;">Operation observation</span></b></p>
 
 ### ```Integer data type```
 
@@ -42,3 +42,7 @@ Take part in certain mathematical and data manipulative operations.
     - For example, ```cout << (109 % 99) << endl;``` result is 10. The result lesser than 99 since 100(A) is greater than 99(B).
 
 3. In the both abovementioned case, we've seen that for any A % B = C, the result 'C' is always less than B.
+
+&nbsp;
+
+## ```Video 2-2 || Video 2-3```
