@@ -3,6 +3,8 @@
 ## **Operators**
 
 Take part in certain mathematical and data manipulative operations.
+<p align="center">
+
 | Operator sign | Task of operator | Example |
 | ---------------|:--------------:| ---------------:|
 | +  | Addition | 1. **Mathematical**: 2 + 2 = 4; <br> 2. **String (Concatenation)**: "Subodh" + " Shil" = "Subodh Chandra"   |
@@ -10,3 +12,10 @@ Take part in certain mathematical and data manipulative operations.
 | * | Multiplication | 5 * 20 = 100 |
 | / | Division | 300 / 20 = 15 |
 | % | Reamainder | 300 % 20 = 0 |
+
+</p>
+
+**Operation observation**:
+
+1. (int / int) = int
+    - Example:
