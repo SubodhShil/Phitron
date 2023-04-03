@@ -1,4 +1,4 @@
-# ```Module 02```
+# **```Module 02```**
 
 ## **Operators**
 
@@ -11,6 +11,8 @@ Take part in certain mathematical and data manipulative operations.
 | * | Multiplication | 5 * 20 = 100 |
 | / | Division | 300 / 20 = 15 |
 | % | Reamainder | 300 % 20 = 0 |
+
+### **Operands**: are the numbers, variables or any other instances in which the operators execute it operations
 
 ## **Operation observation**
 
@@ -30,3 +32,13 @@ Take part in certain mathematical and data manipulative operations.
     <p align="center">
     <img src="./snap1.png">
     </p>
+
+### ```Modulo Operator```
+
+1. A % B = A if B > A
+    - For example, ```cout << (10 % 11) << endl;``` results 10
+
+2. A % B = C where the reuslt C is always lesser than B if and only if B < A
+    - For example, ```cout << (109 % 99) << endl;``` result is 10. The result lesser than 99 since 100(A) is greater than 99(B).
+
+3. In the both abovementioned case, we've seen that for any A % B = C, the result 'C' is always less than B.

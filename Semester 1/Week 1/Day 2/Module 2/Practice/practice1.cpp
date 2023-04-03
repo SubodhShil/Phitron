@@ -21,5 +21,9 @@ int main()
 
     cout << z << endl;
 
+    cout << (10 % 11) << endl;
+    cout << (5 % 2) << endl;
+    cout << (109 % 99) << endl;
+
     return 0;
 }
