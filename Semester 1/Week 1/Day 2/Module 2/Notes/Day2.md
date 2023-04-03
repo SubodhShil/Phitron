@@ -27,8 +27,6 @@ Take part in certain mathematical and data manipulative operations.
 
 1. float identifer = (int / int) = int
     - Example: ```float x = (5 / 2);``` We expected this statement to result 2.5, but division of two integer always results an integer even you store that number into a float variable. To, acheive the fractions you need to either typecast to float or provide a fractional part. For instance, ```float x = float(5) / 2;``` Follow the following snapshot and observe how float behaves with various numbers:  
-   <center>
-
-    ![snippet1](./snap1.png)
-
-    </center>
+    <p align="center">
+    <img src="./snap1.png">
+    </p>
