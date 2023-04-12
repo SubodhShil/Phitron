@@ -105,7 +105,7 @@ for(int i = 0; i < 5; i++)
 4. Array stored in a contiguous memory location, which means you can track any array element without iteration or simply say random array element access is possible. The time complexity for randomly accessing an array element is O(1) or constant time access.
 
 5. How compiler access an array element within constant time? => Behind the seen the compiler does some mathematical calculations to find the nth element of an array. The compiler does find the address of every array element thus we can access array elements randomly in constant time.
-&nbsp;
+&nbps;
 **Formula**: address_of_the_array + total_array_element_size *(target nth element - first_element)
 Since, first element of an array starts with 0 so we can rewrite the formula as:
 address_of_the_array (address of the first element)  + total_array_element_size* target_nth_element
