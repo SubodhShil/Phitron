@@ -120,6 +120,23 @@ cout << arr << endl;
 cout << &arr[0] <<endl;
 ```
 
+7. **Address and index relation**: For each index an array element move to it's next element address in an mathematical formula interval. For example,
+
+```
+int arr[3] = {-1, -2, -3};
+```
+
+Here in the array suppose, the address of the first element is 500 lets say base address. Since, this array has 3 elements, we can get the second element address:
+
+```
+base address + (nth-element index x data_type)
+```
+
+Now, calculating the addresses  
+1st element address (arr[0]) = **500 + (0 * 4) = 500**  
+2nd element address (arr[1]) = **500 + (1 * 4) = 504**  
+3rd element address (arr[2]) = **500 + (2 * 4) = 508**  
+
 ***Traits of an array***
 
 1. An array has a 0-based index system, which implies that its items are numbered beginning with 0 rather than 1. In other words, the first item in an array has an index of 0, and the last element has an index of size - 1, where "size" refers to the array's total number of items.
