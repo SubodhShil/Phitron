@@ -89,7 +89,7 @@ printf("%d", arr[2]);
 
 ***Traits of an array***
 
-1. Array obeys the 0-based index system.
+1. An array has a 0-based index system, which implies that its items are numbered beginning with 0 rather than 1. In other words, the first item in an array has an index of 0, and the last element has an index of size - 1, where "size" refers to the array's total number of items.
 2. Array allocates memory of the size it’s been declared. If the array isn’t dynamic then the array size must be a constant unsigned integer value.
 3. In lcoal scope, for a size 'n', the array initializes with garbage value for each index. Try print out this:
 
@@ -113,4 +113,4 @@ For example: If the address of the array is 1000, the element size is 8 then fin
 Calculation: 1000 + 8 * 6 = 1048
 Keypoint: In C or C++ address of an array is represented by its 1st element or the 0th index element. Since we have the formula for tracking any array element we can now apply the first element’s address and find the address of the element at the nth index.
 
-6. 
+6.
