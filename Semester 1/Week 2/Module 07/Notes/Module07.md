@@ -46,7 +46,7 @@ int arr[1000];
 ```
 
 ```
-int arr[]{5, 10, 15, 20};
+int arr[] = {5, 10, 15, 20};
 ```
 
 👆 Aforementioned snippets are correct. But, following are not 👇
@@ -70,22 +70,55 @@ int arr[3];
 arr[0] = 10, arr[1] = 20, arr[2] = 30;
 ```
 
-5. **Accessing value**: Each element of the array can be accessed by it's index. Array element accessing range: First array element = 0 and last array element = size - 1. So, the range of an array element is arr[0] to arr[size - 1]
+5. **Accessing value**
+
+    - Accessing by index: Each element of the array can be accessed by it's index. Array element accessing range: First array element = 0 and last array element = size - 1. So, the range of an array element is arr[0] to arr[size - 1]
+
+        ```
+        int arr[] = {10, 20, 30};
+
+        /// accessing the first element
+        printf("%d", arr[0]);
+
+        /// accessing the second element
+        printf("%d", arr[1]);
+
+        /// accessing the third element
+        printf("%d", arr[2]);
+        ```
+
+    - Accessing using pointer dereferencing:
+
+        ```
+        int arr[] = {10, 20, 30};
+
+        /// accessing the first element
+        printf("%d\n", *(arr));
+
+        /// accessing the second element
+        printf("%d\n", *(arr + 1));
+
+        /// accessing the third element
+        printf("%d\n", *(arr + 2));
+        ```
+
+    Quiz:
+
+    ```
+    int x[3] = {10, 20, 30};
+    printf("%d\n", *x + 2);
+    printf("%d\n", x[0] + *(x + 1));
+    ```
+
+6. The name of the array is only recognized the first element. All other elements are recognized by index. But in C++, printing the array name will show an address which is actual address of the array or the first elements address.
 
 ```
-int arr[]{10, 20, 30};
+int arr[5] = {0};
 
-/// accessing the first element
-printf("%d", arr[0]);
-
-/// accessing the second element
-printf("%d", arr[1]);
-
-/// accessing the third element
-printf("%d", arr[2]);
+/// both will show same address
+cout << arr << endl;
+cout << &arr[0] <<endl;
 ```
-
-6. The name of the array is only recognized the first element. All other elements are recognized by index.
 
 ***Traits of an array***
 
