@@ -15,13 +15,13 @@ A linear fashion, continuous data structure that stores data of similar type (In
 ***Syntax***
 
 ```
-    ///@syntax: data_type identifier[size];
+///@syntax: data_type identifier[size];
 
-    /// create an array that stores student name (string)
-    string studentNames[1000];
+/// create an array that stores student name (string)
+string studentNames[1000];
 
-    /// creating an array of 1000 students age
-    int studentAges[1000];
+/// creating an array of 1000 students age
+int studentAges[1000];
 ```
 
 ***Notes***
@@ -31,28 +31,28 @@ A linear fashion, continuous data structure that stores data of similar type (In
 3. The size of array is could be a constant.
 
 ```
-    int size;
-    cin >> size;
-    int arr[size];
+int size;
+cin >> size;
+int arr[size];
 ```
 
 ```
-    const int size = 1000;
-    int arr[size];
+const int size = 1000;
+int arr[size];
 ```
 
 ```
-    int arr[1000];
+int arr[1000];
 ```
 
 ```
-    int arr[]{5, 10, 15, 20};
+int arr[]{5, 10, 15, 20};
 ```
 
 👆 Aforementioned snippets are correct. But, following are not 👇
 
 ```
-    int arr[];
+int arr[];
 ```
 
 4. **Inserting value to the array**: The operation is also known as insertion operation of array. We can initialize an array using following method.  
@@ -60,14 +60,14 @@ A linear fashion, continuous data structure that stores data of similar type (In
 **(1) Initialize at time of declaration**
 
 ```
-    int arr[5] = {1, 2, 3, 4, 5};
+int arr[5] = {1, 2, 3, 4, 5};
 ```
 
 **(2) Initialized By index**
 
 ```
-    int arr[3];
-    arr[0] = 10, arr[1] = 20, arr[2] = 30;
+int arr[3];
+arr[0] = 10, arr[1] = 20, arr[2] = 30;
 ```
 
 5. The name of the array is only recognized the first element. All other elements are recognized by index.
@@ -76,3 +76,13 @@ A linear fashion, continuous data structure that stores data of similar type (In
 
 1. Array obeys the 0-based index system.
 2. Array allocates memory of the size it’s been declared. If the array isn’t dynamic then the array size must be a constant unsigned integer value.
+3. In lcoal scope, for a size 'n', the array initializes with garbage value for each index. Try print out this:
+
+```
+int arr[5];
+
+for(int i = 0; i < 5; i++)
+{
+    printf("%d\n", arr[i]);
+}
+```
