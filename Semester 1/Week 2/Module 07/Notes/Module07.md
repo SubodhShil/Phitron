@@ -112,30 +112,29 @@ arr[0] = 10, arr[1] = 20, arr[2] = 30;
 
 6. The name of the array is only recognized the first element. All other elements are recognized by index. But in C++, printing the array name will show an address which is actual address of the array or the first elements address.
 
-```
-int arr[5] = {0};
+    ```
+    int arr[5] = {0};
 
-/// both will show same address
-cout << arr << endl;
-cout << &arr[0] <<endl;
-```
+    /// both will show same address
+    cout << arr << endl;
+    cout << &arr[0] <<endl;
+    ```
 
 7. **Address and index relation**: For each index an array element move to it's next element address in an mathematical formula interval. For example,
 
-```
-int arr[3] = {-1, -2, -3};
-```
+    ```
+    int arr[3] = {-1, -2, -3};
+    ```
 
-Here in the array suppose, the address of the first element is 500 lets say base address. Since, this array has 3 elements, we can get the second element address:
+    Here in the array suppose, the address of the first element is 500 lets say base address. Since, this array has 3 elements, we can get the second element address:
+            ```
+            base address + (nth-element index x data_type)
+            ```
 
-```
-base address + (nth-element index x data_type)
-```
-
-Now, calculating the addresses  
-1st element address (arr[0]) = **500 + (0 * 4) = 500**  
-2nd element address (arr[1]) = **500 + (1 * 4) = 504**  
-3rd element address (arr[2]) = **500 + (2 * 4) = 508**  
+    Now, calculating the addresses  
+    1st element address (arr[0]) = **500 + (0 * 4) = 500**  
+    2nd element address (arr[1]) = **500 + (1 * 4) = 504**  
+    3rd element address (arr[2]) = **500 + (2 * 4) = 508**  
 
 ***Traits of an array***
 
@@ -143,14 +142,14 @@ Now, calculating the addresses
 2. Array allocates memory of the size it’s been declared. If the array isn’t dynamic then the array size must be a constant unsigned integer value.
 3. In lcoal scope, for a size 'n', the array initializes with garbage value for each index. Try print out this:
 
-```
-int arr[5];
+    ```
+    int arr[5];
 
-for(int i = 0; i < 5; i++)
-{
-    printf("%d\n", arr[i]);
-}
-```
+    for(int i = 0; i < 5; i++)
+    {
+        printf("%d\n", arr[i]);
+    }
+    ```
 
 4. Array stored in a contiguous memory location, which means you can track any array element without iteration or simply say random array element access is possible. The time complexity for randomly accessing an array element is O(1) or constant time access.
 
@@ -163,4 +162,18 @@ For example: If the address of the array is 1000, the element size is 8 then fin
 Calculation: 1000 + 8 * 6 = 1048
 Keypoint: In C or C++ address of an array is represented by its 1st element or the 0th index element. Since we have the formula for tracking any array element we can now apply the first element’s address and find the address of the element at the nth index.
 
-6.
+6. Variable size array vs Fixed size array
+
+    **Variable sized array**:
+
+    ```
+    int x;
+    cin >> x;
+    int arr[x];
+    ```
+
+    **Fixed size array**:
+
+    ```
+    int arr[100];
+    ```
