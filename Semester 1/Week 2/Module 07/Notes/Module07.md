@@ -172,8 +172,23 @@ Keypoint: In C or C++ address of an array is represented by its 1st element or t
     int arr[x];
     ```
 
+    With variable sized array, you can't initialize at declaration.
+    ❌❌❌
+
+    ```
+    int x;
+    cin >> x;
+    int arr[x] = {10, 20, 30}; /// Wrong
+    ```
+
     **Fixed size array**:
 
     ```
     int arr[100];
+    ```
+
+    With fixed size array it is safe to initialize.
+
+    ```
+    int arr[100] = {300};
     ```
