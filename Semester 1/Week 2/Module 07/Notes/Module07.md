@@ -72,7 +72,8 @@ arr[0] = 10, arr[1] = 20, arr[2] = 30;
 
 5. **Accessing value**
 
-    - Accessing by index: Each element of the array can be accessed by it's index. Array element accessing range: First array element = 0 and last array element = size - 1. So, the range of an array element is arr[0] to arr[size - 1]
+    - Accessing by index: Each element of the array can be accessed by it's index. Array element accessing range: First array element = 0 and last array element = size - 1. So, the range of an array element is arr[0] to arr[size - 1]  
+    **Accessing n-th element of an array: identifierOfArray[n - 1]**
 
         ```
         int arr[] = {10, 20, 30};
