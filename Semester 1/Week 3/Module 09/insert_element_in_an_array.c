@@ -32,6 +32,7 @@ void insertElementAtPosition(int n, int d, int k)
         printf("%d ", arr[i]);
 }
 
+/// way 02
 void insertElementAtPosition_w2(int n, int d, int k)
 {
     ++n;
