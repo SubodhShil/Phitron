@@ -10,7 +10,7 @@ In the case of a character array, each element is distinct, so we don't need any
 
 ```mermaid
 flowchart LR
-    id1[(Character array size - 1) == Character array elements count]
+    id1[Character array size - 1 == Character array elements count]
 ```
 
 Quiz:
@@ -23,7 +23,7 @@ Quiz:
 3. How we can get integer value 8 from a character variable a='8'?
 => ```int ans = a - '0';```
 
-4. 
+4.
 
 ## <p align="center"><b>String Operations</b></p>
 
