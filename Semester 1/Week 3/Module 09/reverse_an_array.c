@@ -19,6 +19,9 @@ void reverseArray(int *arr, int size)
         printf("%d ", arr[i]);
 }
 
+/// avoid an extra pointer
+void reverseArray_w2(){}
+
 int main()
 {
     int arr[] = {5, 1, 100, 200, -33};
