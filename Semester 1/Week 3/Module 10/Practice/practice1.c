@@ -5,7 +5,7 @@ int main()
     /*
 
     /// traditional array initialization
-    char name[10] = {'S', 'u', 'b', 'o', 'd', 'h'};
+    char name[7] = {'S', 'u', 'b', 'o', 'd', 'h', '\0'};
 
     /// traditional array loop printing
     for (int i = 0; i < 10; i++)

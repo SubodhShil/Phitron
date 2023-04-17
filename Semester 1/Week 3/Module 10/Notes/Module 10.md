@@ -10,5 +10,25 @@ In the case of a character array, each element is distinct, so we don't need any
 
 ```mermaid
 flowchart LR
-    id1[Character array size - 1 == Character array elements count]
+    id1[(Character array size - 1) == Character array elements count]
+```
+
+Quiz:
+
+1. For an array of size 10, how many valid elements user can input?
+=> 10 - 1 = 9, an extra element is reserved for null character.
+
+## <p align="center"><b>String Operations</b></p>
+
+1. For string input '&' operator is not mandatory.
+2. What is segmentation fault? => Acessing more size than allocated memory.
+3. In Windows operating systems, extra memory is allocated. As a result, if more characters are inputted into a character array than its defined size, no error is displayed and the string is printed. However, in Linux operating systems, a segmentation or runtime error is shown in the same situation. Despite this difference, it is important to follow the correct method of inputting data and always careful to not exceed the predefined character array size.
+
+```
+char country[6];
+scanf("%s", &country);
+
+/// suppose input is 'Bangladesh' which exceeds 6 character. for windows operating system it won't show error
+
+printf("%s", country);
 ```
