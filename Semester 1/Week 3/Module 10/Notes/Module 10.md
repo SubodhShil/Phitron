@@ -10,5 +10,5 @@ In the case of a character array, each element is distinct, so we don't need any
 
 ```mermaid
 flowchart LR
-    id1[Character array size == Character array elements count]
+    id1[Character array size - 1 == Character array elements count]
 ```
