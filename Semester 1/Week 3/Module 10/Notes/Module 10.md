@@ -8,6 +8,7 @@ Character arrays are different from integer or other types of arrays. Character 
 
 In the case of a character array, each element is distinct, so we don't need any sort of seperator for character arrays or strings. Whereas, an integer array element could have multiple digits. Here, we require something to separate multiple elements. For example, if 111 is an array element and 222 is another array element, if we don't put any space between 111 and 222, this will become 111222, which is also a single number. So, we require a space separator for only number type or non-character type of array.
 
-<blockquote align="center" style="border-left: 5px solid #ccc; padding: 10px;">
-Character array size == Character array elements count
-</blockquote>
+    ```mermaid
+flowchart LR
+    id1[Character array size == Character array elements count]
+```
