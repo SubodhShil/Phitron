@@ -17,6 +17,13 @@ Quiz:
 
 1. For an array of size 10, how many valid elements user can input?
 => 10 - 1 = 9, an extra element is reserved for null character.
+2. What does the null character  '\0'?
+=> Indicates the end of a string.
+
+3. How we can get integer value 8 from a character variable a='8'?
+=> ```int ans = a - '0';```
+
+4. 
 
 ## <p align="center"><b>String Operations</b></p>
 
@@ -32,3 +39,13 @@ scanf("%s", &country);
 
 printf("%s", country);
 ```
+
+### <p><b>String print with spaces</b></p>
+
+**fgets()**  
+<ins>**Required header file:**</ins> #include <string.h>  
+fgets() also receives enter as a valid character input.
+
+**Size vs Length of a string**  
+Size: Size is defined in compiled time. How many characters are allocated for the string.
+Length: Length is how many characters are there in a string.
