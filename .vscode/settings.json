@@ -2,6 +2,8 @@
     "files.associations": {
         "stdio.h": "c",
         "sstream": "c",
-        "regex": "c"
+        "regex": "c",
+        "cstring": "c",
+        "typeinfo": "c"
     }
 }
