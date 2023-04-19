@@ -9,8 +9,8 @@ void alphabetFrequencyCount()
     char word[100];
     scanf("%s", &word);
 
-    int counts[26];
-    memset(counts, 0, sizeof(counts));
+    int counts[26] = {0};
+    // memset(counts, 0, sizeof(counts));
 
     /// pre computing
     for (int i = 0; i < strlen(word); ++i)
