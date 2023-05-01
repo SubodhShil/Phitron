@@ -23,6 +23,33 @@ return_type function_name(parameter_list or void)
 
 5. **return_type** is the data type the function tend to return
 
-6. Function can have one parameter or multiple parameter (seperated by comma). In contrast, a functino without any parameter can be ommited with keyword **void**, alternatively you can also left the place blank.
- 
-7. 
+6. Function can have one parameter or multiple parameter (seperated by comma). In contrast, a functino without any parameter can be ommited with keyword **void**, alternatively you can also left the place blank. But both of them are not entirely similar.
+    - using **void** keyword: Passing any value will cause error.
+
+    ```
+    string sayHello(void)
+    {
+        return "Hello";
+    }
+
+    int main()
+    {
+        cout << sayHello("David"); /// error
+    }
+    ```
+
+    - blank parameter list: Even if caller passed value, the value won't be utilized rather ignored by the compiler.
+
+    ```
+    string sayHello()
+    {
+        return "Hello";
+    }
+
+    int main()
+    {
+        cout << sayHello("David"); /// won't create any error
+    }
+    ```
+
+7.
