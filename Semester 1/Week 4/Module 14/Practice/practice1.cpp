@@ -2,9 +2,10 @@
 using namespace std;
 
 /// this function demonstrates
-/// how return type and parameter works in a function
+/// how return type and parameter works together
+/// in a function
 
-void sumOfNumbers(int = 0, int = 0);
+int sumOfNumbers(int = 0, int = 0);
 
 int product(int x = 1, int y = 1)
 {
@@ -17,8 +18,8 @@ int main()
     return 0;
 }
 
-void sumOfNumbers(int x, int y)
+int sumOfNumbers(int x, int y)
 {
     cout << "Sum is: " << x + y << endl;
-    cout << product() << endl;
+    cout << "Product is: " << product() << endl;
 }
