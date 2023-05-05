@@ -7,12 +7,6 @@ int main()
     scanf("%d", &n);
     int spaeCnt = n - 1;
 
-    /// if surpasses the constraint then do not proceed
-    if (n > 9)
-    {
-        exit(0);
-    }
-
     for (int i = 1; i <= n; ++i)
     {
         for (int j = 1; j <= spaeCnt; ++j)

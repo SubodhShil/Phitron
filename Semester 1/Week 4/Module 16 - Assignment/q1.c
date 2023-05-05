@@ -1,3 +1,5 @@
+/// Write a C program to take positive integer N as input and print a pattern shown in the sample input output.
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -5,13 +7,6 @@ int main()
 {
     int n;
     scanf("%d", &n);
-
-    /// constraint
-    /// if surpasses the constraint then do not proceed
-    if (n > 5)
-    {
-        exit(0);
-    }
 
     /// there will be total (2n - 1) number of lines to be
     /// printed in the pyramid to make the diamond

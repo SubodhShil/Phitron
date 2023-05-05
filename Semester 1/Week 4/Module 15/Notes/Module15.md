@@ -15,7 +15,7 @@ cout << *ptr << endl;
 
 ### **Pass or call by value**
 
-When a function is called or invoked, the value we pass as argument is copied into the function parameter and any changed make to that parameter is completely local means no actual value changed through the process even if value at the function is spoiled.
+When a function is called or invoked, the value we pass as an argument is copied into the function parameter, and any changes made to that parameter are completely local means no actual value changed through the process even if the value at the function is changed/spoiled/updated.
 
 ```
 #include <stdio.h>
@@ -38,6 +38,8 @@ int main()
 ```
 
 ### **Pass or call by reference**
+
+In pass by reference we have to provide the address of a variable to the parameter of a function, where the parameter is a pointer variable. Since the parameter is a pointer variable, it can dereference that value. If the value changes by dereferencing, the actual value at the address will also be changed.
 
 ```
 void callByReference(int *y)
@@ -62,10 +64,10 @@ int main()
 1. Address of entire array == Address of the first element of the array
 2. Name of the array represents a pointer
 3. arr[i] = *(arr + i)
-4. arr[1] == *(arr + 1) == *(1 + arr) == 1[arr]
+4. arr[1] == *(arr + 1) ==*(1 + arr) == 1[arr]
 5. When you pass an array as an argument to a function, the array is converted to a pointer to the first element of the array. This is called pass-by-reference. The reason for this is that arrays are passed by value in C, and passing an array by value would create a copy of the entire array, which can be wasteful of memory.  
 When the printArray() function is called, the function does not need to know the size of the arr array. This is because the function can simply use the pointer to access the elements of the array. This saves stack space because the function does not need to allocate space for the arr array on the stack.
-6. The reason why sizeof(arr) returns 2 is because when you pass an array as an argument to a function, it decays into a pointer to the first element of the array. So, sizeof(arr) is equivalent to sizeof(int*), which is the size of a pointer variable in your system. The size of a pointer variable is usually 4 bytes on 32-bit systems and 8 bytes on 64-bit systems. 
+6. The reason why sizeof(arr) returns 2 is because when you pass an array as an argument to a function, it decays into a pointer to the first element of the array. So, sizeof(arr) is equivalent to sizeof(int*), which is the size of a pointer variable in your system. The size of a pointer variable is usually 4 bytes on 32-bit systems and 8 bytes on 64-bit systems.
 **To fix the problem you need to pass the size of the array to function as well**:  
 
 ```
@@ -89,6 +91,7 @@ int main()
 ```
 
 ## Quiz
+
 ```
 #include <stdio.h>
 int main()
@@ -101,4 +104,5 @@ int main()
 }
 
 ```
+
 Result: 5

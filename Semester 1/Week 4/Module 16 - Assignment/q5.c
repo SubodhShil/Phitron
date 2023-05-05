@@ -21,7 +21,6 @@ int is_palindrome(char str[])
 int main()
 {
     char str[11];
-    printf("Enter a string: ");
     scanf("%s", str);
 
     if (is_palindrome(str))

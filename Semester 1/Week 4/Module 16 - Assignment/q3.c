@@ -1,16 +1,8 @@
 #include <stdio.h>
 
-int main()
+int count_before_zero(int arr[], int n)
 {
-    int n;
-    scanf("%d", &n);
     int cntBeforeZero = 0;
-    int arr[n];
-
-    for (int i = 0; i < n; ++i)
-    {
-        scanf("%d", &arr[i]);
-    }
 
     for (int i = 0; i < n; ++i)
     {
@@ -20,7 +12,21 @@ int main()
             cntBeforeZero++;
     }
 
-    printf("%d\n", cntBeforeZero);
+    return cntBeforeZero;
+}
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    int arr[n];
+
+    for (int i = 0; i < n; ++i)
+    {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("%d\n", count_before_zero(arr, n));
 
     return 0;
 }
