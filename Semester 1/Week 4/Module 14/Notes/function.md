@@ -106,4 +106,84 @@ return_type function_name(parameter_list or void)
     sort(v.begin(), v.end());
     ```
 
-    3. 
+    3. The return statement in a void function serves as a termination point (since void functions can't return any value), causing the function to stop processing any further. However, unlike a return statement in a function that has a return type, a return statement in a void function does not return a value
+
+    ```
+    void printN(int n)
+    {
+        /// stops when value of 'n' gets 0
+        if(n == 0)
+            return;
+
+        cout << n << endl;
+    }
+    ```
+
+    4. The first return statment is the termination point.
+
+    ```
+    void printN(int n)
+    {
+        if(n % 2 == 0)
+            return;
+
+        if(n % 3 == 0)
+            return;
+
+        cout << n << endl;
+    }
+
+    int main()
+    {
+        /// first if statement works out and stop execution
+        printN(10); 
+
+        /// second if statement works out and stop execution
+        printN(9);
+
+        /// prints 1 since no statement works out
+        printN(1);
+    }
+    ```
+
+<p align="center" style="font-size:22px"> <b>Built in functions</b> </p>
+
+C and C++ programming language packed with a handful amount of built in functions, each contained in various header files:
+
+1. ceil(x): rounds up to the next integer if any fraction is present.
+2. floor(x): rounds down to the previous integer if any fraction is present.
+3. round(x): rounds to the next integer if the number is greater than or equal to n.5; otherwise, it rounds down to the previous integer.
+4. sqrt(x): calculates the square root of the value.
+5. pow(a, b): takes two values, a and b, and calculates a raised to the power of b.
+6. abs(x): returns the absolute value of the input, which is positive if the input is negative and positive otherwise.
+
+<p align="center" style="font-size:22px"> <b>Scope</b> </p>
+
+A function's parameter is local to the function body and any changes made to it will not affect the actual variable value because functions receive variables as call by value. When caller passes a value to a function, the parameter actually make a copy of the value and invoke to itself.
+
+```
+void valueCheck(int a, int b)
+{
+    a = 100;
+    b = 200;
+}
+
+int main()
+{
+    int a = 10, b = 20;
+    valueCheck(a, b);
+
+    /// value of 'a' and 'b' will remain same
+    cout << a << " " << b << endl;
+}
+```
+
+<p align="center" style="font-size:22px"> <b>Pointer</b> </p>
+
+Pointer is a special type of variable that only stores the address of a variable.
+
+Character pointer: Character pointers are special because cout treats them differently than other types of pointers. When cout sees a char * argument, it treats it as a pointer to a null-terminated string and prints the string that starts at the address pointed to by the pointer.
+
+To print the memory address stored in a char *pointer, we need to explicitly cast it to a void* pointer, which is a generic pointer type that can hold the address of any data type.
+
+For other pointer types like float *, int*, and bool *, cout treats them as pointers to the respective data types and prints their memory addresses without requiring any typecasting.
