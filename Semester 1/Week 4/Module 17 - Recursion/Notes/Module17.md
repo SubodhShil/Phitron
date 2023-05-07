@@ -17,5 +17,3 @@ Recursion is a fuction that calls itself until it reaches a base case and accomp
 <ins>**Stack overflow and segmentation**</ins>: Recursion could cause unlimited recursive function calls. Since call stack has a limited size bounty, it will easily overpass the boundary and create overflow. The overflow is known as 'Stack Overflow' and this creates segmentation fault in application.
 
 To avoid segmentation error, programmers need to be careful about designing safe base case to terminate endless recursive call.
-
-
