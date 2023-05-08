@@ -19,7 +19,7 @@ for (int i = 0; i < 2; ++i)
 }
 ```
 
-<p align="center" style="font-size: 25px;"><b>Matrix and 2D array</b></p>
+## <p align="center"><b>Matrix and 2D array</b></p>
 
 2D arrays are also known as matrix. In mathematics, matrix are two dimensional rectangular array of numbers, symbols or expressions, arranged in row and columns.
 
@@ -34,7 +34,7 @@ for (int i = 0; i < 2; ++i)
 7. Rectangular matrix
 8. square matrix
 
-<p align="center" style="font-size: 25px;"><b>Passing 2D array as argument</b></p>
+## <p align="center"><b>Passing 2D array as argument</b></p>
 
 ### **Syntax:**  
 

@@ -4,6 +4,7 @@
         "sstream": "c",
         "regex": "c",
         "cstring": "c",
-        "typeinfo": "c"
+        "typeinfo": "c",
+        "iostream": "cpp"
     }
 }
