@@ -8,14 +8,14 @@ public:
     {
         int row, col;
         cin >> row >> col;
-        int arr[row][col];
-
         /// edge case: scalar matrix need to be a square matrix
         if (row != col)
         {
             cout << "Row and column value are not same\n";
             return;
         }
+
+        int arr[row][col];
 
         /// 2D array input
         for (int i = 0; i < row; ++i)
