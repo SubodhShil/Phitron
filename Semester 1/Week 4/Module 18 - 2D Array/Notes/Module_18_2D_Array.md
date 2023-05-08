@@ -9,6 +9,17 @@ The first subscript represents 'row' which is itself a 1D array and second subsc
 
 Total values in a 2D array: **row x column**
 
+### **Row Matrix**
+
+A row matrix is a matrix with only one row and 'n' number of columns.
+
+```
+int arr[1][n];
+```
+
+### **Column Matrix**
+
+A matrix with one column is a column matrix.
 A 2D array is a 1D array if the column count is 1.
 
 ```
