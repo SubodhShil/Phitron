@@ -19,4 +19,28 @@ for (int i = 0; i < 2; ++i)
 }
 ```
 
+<p align="center" style="font-size: 25px;"><b>Matrix and 2D array</b></p>
 
+2D arrays are also known as matrix. In mathematics, matrix are two dimensional rectangular array of numbers, symbols or expressions, arranged in row and columns.
+
+**Types of matrix:**
+
+1. Row matrix
+2. Column matrix
+3. Zero or null matrix
+4. Diagonal matrix
+5. Scalar matrix
+6. Unit matrix
+7. Rectangular matrix
+8. square matrix
+
+<p align="center" style="font-size: 25px;"><b>Passing 2D array as argument</b></p>
+
+### **Syntax:**  
+
+```
+void functionName(dataType arrayName[][size2], int size1)
+{
+    // Function code here
+}
+```
