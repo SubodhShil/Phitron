@@ -5,6 +5,7 @@
         "regex": "c",
         "cstring": "c",
         "typeinfo": "c",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "*.tcc": "cpp"
     }
 }
