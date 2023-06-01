@@ -24,5 +24,5 @@ int main()
     s4.replace(4, 0, " everyone");
     cout << s4 << endl;
 
-    return 0;   
+    return 0;
 }
