@@ -59,4 +59,15 @@ for(int i = 0; i <= m; ++i)
 }
 ```
 
-Time Complexity: O(N) + O(M) = O(N + M)
+**Time Complexity: O(N) + O(M) = O(N + M)**
+
+### <p align="center"> **(4)** </p>
+
+```cpp
+int a = 100;
+int b = 200;
+int ans = a + b;
+cout << ans;
+```
+
+**Time Complexity: O(N)**
