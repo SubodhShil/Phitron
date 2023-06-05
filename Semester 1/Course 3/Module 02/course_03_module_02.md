@@ -25,7 +25,7 @@ STL stands for **Standard Template Library**.
 
 &nbsp;
 
-- **Create a new vector by copying a previous vector**
+- **Create a new vector by copying a previous vector or array**
     -
 
     ### <p align="center"> **(Way 1)** </p>
