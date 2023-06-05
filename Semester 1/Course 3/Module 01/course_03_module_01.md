@@ -1,6 +1,6 @@
 > # **```Time Complexity```**
 
-- Time complexity is a parameter compares among algorithms and determine which algorithm will perform better in case of the input size increases drastically over time.
+- Time complexity is a parameter that compares among algorithms and determine which algorithm will perform better in case of the input size increases drastically over time.
 
 - Time complexity doesn't calculated in seconds, miliseconds or any other specific unit measurements, rather use some asymptotic notations like Big Oh, Big Omega and Big Theta to determine if an algorithm is good, best or average.
 
@@ -8,7 +8,7 @@
 
 - Time complexity of a program measures by the number of steps or iterations it used to accomplish the algorithm.
 
-- **O(1)** is constant time complexity algorithm, which means it doesn't any iteration or steps to accomplish the task. The program might only executes some specific statemetns;
+- **O(1)** is constant time complexity algorithm, which means it doesn't includes any iteration or steps to accomplish the task. Nonetheless, the program might only executes some specific statemetns only.
 
 - **O(N)** time complexity means the input size changes in a constant manner or constant interval.
 
@@ -169,13 +169,15 @@ for (int i = 10; i <= n; ++i)
 {
     int number = i;
     int sum = 0;
+
     while (number > 0)
     {
         int digit = number % 10;
         sum += digit;
         number /= 10;
     }
-    cout << "Sum of digit of " << i << " is: " << sum << endl;
+
+    cout << sum << endl;
 }
 ```
 
