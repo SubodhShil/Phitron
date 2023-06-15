@@ -1,6 +1,6 @@
 > # **```Module 5```**
 
-<ins>**Data structure</ins>:** A better option to structure and maintain data in the memory.
+<ins>**Data structure</ins>:** A better way to structure and maintain data in the memory.
 
 ## <ins>**Drawbacks of array**</ins>
 
@@ -17,6 +17,9 @@ Linked list node require two important components, data value and address pointe
 There are various types and variations of linked list available:
 
 1. <ins>**Singly linked list**</ins>: Nodes are connected in a single way.
+2. Doubly linked list
+3. Circular linked list
+4. Circular doubly linked list
 
 ### **Why we need dynamic object to create node?**
 
