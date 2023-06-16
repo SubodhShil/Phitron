@@ -1,10 +1,3 @@
-/**
- * @file        Q1_LL_input_and_size.cpp
- * @author      Subodh Chandra Shil
- * @date        2023-06-15
- * @question:   Take a singly linked list as input and print the size of the linked list.
- */
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -17,16 +10,17 @@ public:
     Node(int data)
     {
         this->data = data;
-        this->nextNode = nullptr;
+        this->nextNode = NULL;
     }
 };
 
-int main()
+void ans(Node *&head)
 {
-    Node *head = nullptr;
-    Node *it = nullptr;
+    Node *it = NULL;
     int cnt = 1;
     int size = 0;
+    int maxVal = INT32_MIN;
+    int minVal = INT32_MAX;
 
     while (1)
     {
@@ -48,10 +42,26 @@ int main()
         else
         {
             it->nextNode = node;
-            it = node;
+            it = it->nextNode;
         }
     }
-    cout << "Size: " << size << endl;
+
+    for (Node *it1 = head; it1 != NULL; it1 = it1->nextNode)
+    {
+        if (it1->data > maxVal)
+            maxVal = it1->data;
+        if (it1->data < minVal)
+            minVal = it1->data;
+    }
+
+    cout << maxVal << " " << minVal << endl;
+}
+
+int main()
+{
+    Node *head = NULL;
+    int size = 0;
+    ans(head);
 
     return 0;
 }
