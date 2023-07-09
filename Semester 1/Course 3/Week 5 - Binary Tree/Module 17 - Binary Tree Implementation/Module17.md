@@ -32,4 +32,7 @@ To traverse a binary tree there are specific way or order, such as:
 graph TD;
 Order-->Depth;
 Order-->Level;
+Depth-->Pre-Order;
+Depth-->Post-Order;
+Depth-->In-Order;
 ```
