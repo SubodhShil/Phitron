@@ -24,9 +24,9 @@ Unlike linear data structures, the non-linear data structures can't be print in 
 
 To traverse a binary tree there are specific way or order, such as:
 
-1. In order traversing
-2. Pre order traversing
-3. Post order traversing
+1. Pre order traversing: Root ➔ Left subtree ➔ Right subtree
+2. In order traversing: Left subtree ➔ root ➔ Right subtree
+3. Post order traversing: Left subtree ➔ Right subtree ➔ Root
 
 ```mermaid
 graph TD;

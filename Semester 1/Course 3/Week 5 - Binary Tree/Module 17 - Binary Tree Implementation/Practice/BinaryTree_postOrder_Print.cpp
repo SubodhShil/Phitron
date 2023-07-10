@@ -14,6 +14,18 @@ public:
     }
 };
 
+void postOrderTraverse(BTnode *root)
+{
+    if (root == nullptr)
+    {
+        return;
+    }
+
+    postOrderTraverse(root->leftChild);
+    postOrderTraverse(root->rightChild);
+    cout << root->data << " ";
+}
+
 int main()
 {
     BTnode *root = new BTnode(10);
@@ -37,6 +49,8 @@ int main()
     d->leftChild = f;
     d->rightChild = g;
     h->rightChild = i;
+
+    postOrderTraverse(root);
 
     return 0;
 }

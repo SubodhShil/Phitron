@@ -14,6 +14,19 @@ public:
     }
 };
 
+void preOrderTraverse(BTnode *root)
+{
+    /// base case
+    if (root == nullptr)
+    {
+        return;
+    }
+
+    cout << root->data << " ";
+    preOrderTraverse(root->leftChild);
+    preOrderTraverse(root->rightChild);
+}
+
 int main()
 {
     BTnode *root = new BTnode(10);
@@ -37,6 +50,8 @@ int main()
     d->leftChild = f;
     d->rightChild = g;
     h->rightChild = i;
+
+    preOrderTraverse(root);
 
     return 0;
 }
