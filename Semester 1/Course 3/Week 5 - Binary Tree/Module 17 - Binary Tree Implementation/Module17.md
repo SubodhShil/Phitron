@@ -22,7 +22,7 @@ A generic tree or **N-ary tree** can have as many nodes as children, but in bina
 
 Unlike linear data structures, the non-linear data structures can't be print in linear order fashion since it has multiple path to be traversed.
 
-To traverse a binary tree there are specific way or order, such as:
+To traverse a binary tree there are mainly four such way to do, such as:
 
 1. Pre order traversing: Root ➔ Left subtree ➔ Right subtree
 2. In order traversing: Left subtree ➔ root ➔ Right subtree
