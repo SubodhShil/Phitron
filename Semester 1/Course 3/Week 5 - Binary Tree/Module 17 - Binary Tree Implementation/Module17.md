@@ -36,3 +36,9 @@ Depth-->Pre-Order;
 Depth-->Post-Order;
 Depth-->In-Order;
 ```
+## **```Variants of binary tree```**
+
+1. **Full Binary Tree**: Count of child nodes either 0 or 2.
+2. **Complete Binary Tree**: All levels are filled properly except for the last level filled from left to right sequentially.
+3. **Perfect or Full or Complete Binary Tree**: All levels needs to be filled up.
+

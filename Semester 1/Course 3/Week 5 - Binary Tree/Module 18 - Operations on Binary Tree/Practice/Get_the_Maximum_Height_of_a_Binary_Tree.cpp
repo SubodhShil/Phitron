@@ -70,7 +70,7 @@ int maxHeight(BTnode *root)
     int leftSide = maxHeight(root->leftChild);
     int rightSide = maxHeight(root->rightChild);
 
-    return min(leftSide, rightSide) + 1;
+    return max(leftSide, rightSide) + 1;
 }
 
 int main()
