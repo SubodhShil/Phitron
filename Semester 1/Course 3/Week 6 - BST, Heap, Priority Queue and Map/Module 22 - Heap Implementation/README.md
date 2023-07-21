@@ -22,4 +22,13 @@ For each node (consider parent of a subtree) of a max heap, it's child can't be 
 2. **Min Heap**: Min heap has all the opposite features of max heap.
 
 While creating a max heap or min heap always consider these following rules:
-1. Is the heap maintaining
+1. Is the max heap or min heap maintaining all properties of complete binary tree
+2. Is the max heap or min heap maintaining all properties of heap
+
+Height of a complete binary tree is: O(log N)
+
+### **Max and Min Heap Deletion**
+When we delete an element from the max heap it will delete the maximum value and for min heap vice versa.
+
+1. Find out the last value of the heap and swap with the max value or root value (**<ins>in a max heap the node with maximum value is the root</ins>**)
+2. Delete the last value from the **heap array** (heap array is the array where the heap were represented).
