@@ -58,7 +58,26 @@ A special type of graph if successfully maintain the following conditions:
      - Space efficient.
      - Size of adjacency list depends on number of edges it has. 
      - **Preferred to use with sparse graph, such as tree.**
-3. Edge listd
+3. Edge list
 
 
+## More types of graphs
+1. **Bipartite graph**: In this type of graph total number of vertices are **divided into only two sets**, where vertices of a similar set not connected with each other, but they can have connection it's opposite set. 
+![bipartite-graph](bipartite-graph.jpg)
 
+> Bipartite graph can only have two vertices set, where for more than two vertices set there is also a variant namely **k-partite** graph.
+
+2. **Complete graph**: Every vertex is directly connect to all other vertices in the graph.
+      -  A complete graph is cyclic.
+      -  A complete graph has n * (n - 1) / 2 number of edges.
+
+![complete-graph](complete-graph.jpg)
+
+3. **Rooted Graph**: The root is explicitly mentioned or the root node or vertex can be recognized in this graph.
+   - **A tree is a rooted graph.**
+
+4. **Unrooted Graph**: In this graph, root node isn't fixed, so any vertex could be the root node or vertex.
+   
+5. **Directed Acyclic Graph (DAG)**: 
+      - Acyclic means no cycle, such as a tree is an acyclic graph. 
+6. 
