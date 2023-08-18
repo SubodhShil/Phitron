@@ -47,6 +47,12 @@ A special type of graph if successfully maintain the following conditions:
 
 **A graph is said to be a tree if it has a singular component and the number of edges in the graph is equal to vertices - 1**.
 
+### Connected Components
+
+> Number of minimum edges need to connect 'n' (n > 1) connected components or making a single connected component, e = (n - 1)
+
+![](connected_component.jpg)
+
 ## <p align="center">Graph Representations</p>
 
 1. Adjacency matrix
@@ -80,4 +86,5 @@ A special type of graph if successfully maintain the following conditions:
    
 5. **Directed Acyclic Graph (DAG)**: 
       - Acyclic means no cycle, such as a tree is an acyclic graph. 
-6. 
+
+
