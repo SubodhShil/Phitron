@@ -34,16 +34,14 @@ Single source shortest path finding algorithm for unweighted undirected graph.
 - If we have two path with similar minimum weight, then we must pick the path the covers minimum steps only.
 - Dijkstra is a greedy algorithm, so it picks the most optimal distance at the current time. At the current time, in which vertex we can go with minimum value.
 
-
+Steps:
 1. Try to relax the childs of a node vertex
 2. If relaxed the, push to the priority queue (min heap).
 
 ![](dijkstra_visualize.jpg)
 
-### Time Complexity of Dijkstra's algorithm
+### <ins>Time Complexity of Dijkstra's algorithm</ins>
 O(N + M)
 
-
-
-
+### 
    
