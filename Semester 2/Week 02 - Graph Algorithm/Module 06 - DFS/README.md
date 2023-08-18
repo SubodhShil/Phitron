@@ -12,7 +12,7 @@
 3. There should exist only a single path between any two node in the tree. 
 4. Number of edges in the tree = |V| - 1 
 
-![](tree_graph.jpg)
+![](tree_graph.jpg)  
 Here in the tree, path from D to G: **D → B → A → F → G**
 
 ### Important Tree Terminologies
