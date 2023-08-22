@@ -1,3 +1,9 @@
+/**
+ * @file                Building_Roads.cpp
+ * @author              Subodh Chandra Shil
+ * @link:               https://cses.fi/problemset/task/1666
+ */
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -10,7 +16,7 @@ void dfs(int s)
     visited[s] = 1;
     for (int child : adjList[s])
     {
-        if (!visited[s])
+        if (!visited[child])
             dfs(child);
     }
 }
@@ -27,32 +33,22 @@ int main()
         adjList[v].push_back(u);
     }
 
-    int s = 1;
-    int requiredRoads = n - 1;
-    int lastVisited = -1;   
-    int needed = -1;
+    vector<int> leaders;
 
-    for (int i = s; i <= n; ++i)
+    for (int i = 1; i <= n; ++i)
     {
         if (!visited[i])
         {
-            lastVisited = i - 1;
+            leaders.push_back(i);
+            dfs(i);
         }
     }
 
-    if (lastVisited == -1)
-    {
-        cout << 0 << endl;
-        return 0;
-    }
+    cout << leaders.size() - 1 << endl;
 
-    needed = requiredRoads - (lastVisited - 1);
-
-    for (int i = 1; i <= needed; ++i)
+    for (int i = 1; i < leaders.size(); ++i)
     {
-        cout << lastVisited << " ";
-        adjList[lastVisited].push_back(++lastVisited);
-        cout << lastVisited << endl;
+        cout << leaders[i - 1] << ' ' << leaders[i] << endl;
     }
 
     return 0;

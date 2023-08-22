@@ -1,7 +1,7 @@
 > # ```Shortest Path Algorithm```
 ![shortest_path_example](shortest_path-1.jpg)
 
-### BFS level is shortest distance or path. But BFS isn't always applicable, if we're given a weighted graph (where edges have different weights).
+### DFS traversal provides random path from source to destination, whereas in BFS traversal the generated level is the shortest distance or path between source and destination. But BFS isn't always applicable, if we're given a weighted graph (where edges have different weights) or negative edge graph then BFS won't work.
 
 Here the concern is to cover distance within minimum steps.
 

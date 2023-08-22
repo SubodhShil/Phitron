@@ -28,6 +28,6 @@ Here in the tree, path from D to G: **D → B → A → F → G**
 <ins>**Tree value properties**</ins>
 1. Depth: Top to bottom manner or ascending manner. The depth of any child node increased by 1 comparing to it's parent.  
       **Child Depth = (Parent Depth) + 1**
-2. Height: Bottom to top manner or descending manner.
+2. Height: Bottom to top manner or descending manner. **The height of a graph is the maximum distance from the ancestor node or source vertex to bottom most leaf (on tree last level leaf node).**
 
 
