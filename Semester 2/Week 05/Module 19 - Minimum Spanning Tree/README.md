@@ -23,4 +23,6 @@ It follows the conditions of a tree.
 Starting from the source node pick up the minimum cost edge connected to the source node.
 
 > # **```Kruskal's Algorithm```**
-
+- Sort the edges in ascending order.
+- While selecting an edges in minimum cost order always check if considering the edge will create any cycle or not. This can be easily found using DSU. 
+- 
