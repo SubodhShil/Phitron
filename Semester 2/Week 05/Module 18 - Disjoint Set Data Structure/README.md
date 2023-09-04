@@ -9,7 +9,7 @@
 
 ### Common usecase
 1. Cycle detection.
-2. Component count, component same or not.
+2. Component count, component same or not. 
 3. Two components are friend or not.
 
 ### Operations of DSU
@@ -25,10 +25,18 @@
 
 ## ```Union Operation Optimization```
 
-### Union by level
+### Union by level or rank
 দুটি connected component বা group এর মধ্যে যে component group এর level কম হবে সেটা, বাকি component group এর parent এর child হিসেবে যুক্ত হবে । এটা করার কারণে graph এর level বাড়বে না । 
 
 Prerequisite: level count করা ।
 
 ### Union by size
+Size এর দিক থেকে যে group -টি বড় তার under এ ছোট size এর group টি থাকবে । 
+
+Complexity of both optimized union operation O(α(n))
+The complexity O(α(n)) is near to constant time complexity.
+
+### How to count components
+যতগুলো leader ততগুলো component.   
+If there are more than one leader in the graph then it has more than one component. The number of component in graph depends on how many leader are there in the graph.
 
