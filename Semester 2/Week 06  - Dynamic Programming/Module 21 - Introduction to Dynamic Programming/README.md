@@ -1,6 +1,9 @@
 > # **```Dynamic Programming```**
 
-### Fixed answer is the base of a recursion.
+## How to choose a base case?
+- Fixed answer is the base of a recursion.
+- যে parameter গুলোর value change হয় তাদের নিয়েই base case দিতে হয় ।   
+The parameters who's values are chagned during the recursive call should be constrcuted as base case.
 
 <ins>**Memoization**</ins>: A technique to optimize recursive algorithms by storing intermediate results. DP memoization uses recursion technique. This technique also known as top-down approach.  
 
