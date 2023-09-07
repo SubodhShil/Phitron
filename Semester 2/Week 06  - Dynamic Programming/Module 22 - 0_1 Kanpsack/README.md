@@ -1,4 +1,4 @@
-> # **```0-1 Knapsack```**
+> # **```0/1 Knapsack```**
 
 1. If we don't pick an item = weight will remain same
 2. If we pick an item = weight will be truncated
