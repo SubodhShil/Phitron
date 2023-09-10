@@ -1,5 +1,15 @@
 > # **```Dynamic Programming```**
 
+### DP is a optimized version of recursion.
+## When to use DP?
+1. Choice -> Recursion 
+2. When question said compute various way or "in how many ways to generate" something.F
+3. Optimization 
+   1. Maximum value or result
+   2. Minimum value or result
+   3. Get longest value or result
+   4. Get small value or result
+
 ## How to choose a base case?
 - Fixed answer is the base of a recursion.
 - যে parameter গুলোর value change হয় তাদের নিয়েই base case দিতে হয় ।   
