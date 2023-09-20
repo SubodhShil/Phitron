@@ -19,4 +19,9 @@ Continue do the same stuff following steps **1 to 3**.
 
 ### **Binary tree height**
 
-The number of nodes in the longest path from the root to any leaf node.
+The number of nodes in the longest path from the root to any leaf node. 
+
+The lowest height tree can have is 1. In this case, that tree would have only one node. 
+
+### Diameter of a binary tree
+Diameter is a longest path between any two nodes of a binary tree.
