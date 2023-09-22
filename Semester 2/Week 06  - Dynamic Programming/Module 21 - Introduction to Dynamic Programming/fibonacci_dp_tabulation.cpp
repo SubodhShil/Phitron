@@ -8,6 +8,8 @@ int main()
     ll n;
     cin >> n;
     vector<ll> result(n + 1, -1);
+
+    /// Task 1: convert the base case
     result[0] = result[1] = 1;
 
     for (int i = 2; i <= n; ++i)

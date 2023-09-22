@@ -3,8 +3,9 @@
 ### DP is a optimized version of recursion.
 ## When to use DP?
 1. Choice -> Recursion 
-2. When question said compute various way or "in how many ways to generate" something.F
-3. Optimization 
+2. When question said compute various way or "in how many ways to generate" something.
+3. If there can be multiple results of a problem, and various way or combination to get a result, then DP should be used.
+4. Optimization 
    1. Maximum value or result
    2. Minimum value or result
    3. Get longest value or result
