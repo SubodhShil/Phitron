@@ -65,8 +65,9 @@ int main()
         int ki, kj, qi, qj;
         cin >> n >> m >> ki >> kj >> qi >> qj;
 
-        /// Pattern if questoin says to print YES and NO
+        /// Pattern: if question says to print YES and NO
         /// use DFS only if it says to print YES or NO type answer
+
         /* dfs(ki, kj);
 
         if (visited[qi][qj])

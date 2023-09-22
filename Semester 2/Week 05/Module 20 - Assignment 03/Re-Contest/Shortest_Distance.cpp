@@ -47,7 +47,7 @@ int main()
     }
 
     /// display
-    for (int i = 1; i <= n; ++i)
+    /* for (int i = 1; i <= n; ++i)
     {
         for (int j = 1; j <= n; ++j)
         {
@@ -57,10 +57,10 @@ int main()
                 cout << dist[i][j] << '\t';
         }
         cout << endl;
-    }
+    } */
 
-    /// Implement problem statements
-    /* int t;
+    /// problem statements
+    int t;
     cin >> t;
     while (t--)
     {
@@ -70,21 +70,7 @@ int main()
             cout << -1 << endl;
         else
             cout << dist[a][b] << endl;
-    } */
+    }
 
     return 0;
 }
-
-/*
-----------
-Testcase 1
-----------
-4 6
-1 2 3
-2 1 2
-1 4 5
-4 3 2
-3 2 1
-2 4 4
-
- */
