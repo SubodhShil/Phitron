@@ -62,13 +62,45 @@ BTnode *inputTree()
     return root;
 }
 
-BTnode *makeBT(int *arr, int n, int l, int r)
+BTnode *covertArrayToBT(int *arr, int n, int l, int r)
 {
+    if (l > r)
+        return nullptr;
+
     int mid = l + (r - l) / 2;
     BTnode *root = new BTnode(arr[mid]);
-    BTnode *leftNode = makeBT(arr, n, l, mid - 1);
-    BTnode *rightNode = makeBT(arr, n, mid + 1, r);
-    root->leftChild;
+    BTnode *leftNode = covertArrayToBT(arr, n, l, mid - 1);
+    BTnode *rightNode = covertArrayToBT(arr, n, mid + 1, r);
+
+    root->leftChild = leftNode;
+    root->rightChild = rightNode;
+
+    return root;
+}
+
+void levelOrder(BTnode *root)
+{
+    if (root == NULL)
+    {
+        cout << "Tree doesn't exist" << endl;
+        return;
+    }
+
+    queue<BTnode *> q;
+    q.push(root);
+    while (!q.empty())
+    {
+
+        BTnode *f = q.front();
+        q.pop();
+
+        cout << f->data << " ";
+
+        if (f->leftChild)
+            q.push(f->leftChild);
+        if (f->rightChild)
+            q.push(f->rightChild);
+    }
 }
 
 int main()
@@ -85,7 +117,19 @@ int main()
         cin >> arr[i];
     }
 
-    BTnode *root = makeBT();
+    BTnode *root = covertArrayToBT(arr, n, 0, n - 1);
+    levelOrder(root);
 
     return 0;
 }
+
+/*
+
+Input:
+6
+2 5 8 12 15 18
+
+Output:
+8 2 15 5 12 18
+
+ */
