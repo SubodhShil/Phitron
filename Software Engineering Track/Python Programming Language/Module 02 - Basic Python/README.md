@@ -26,3 +26,5 @@ print(global_value)
 
 ## Modules
 
+
+### list, array and collection all same and interchangeable names in python.
