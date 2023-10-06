@@ -3,9 +3,9 @@
 ## args
 **args** are arguments contains in a tuple. 
 
-*args are beneficial when we don't know how many arguments could be passed in a function. Args are arguments contained in a tuple and we can also iterate on args. To indicate *args as argument, the symbol ( * ) known as the unpacking operator. The *args is not a strict keyword to be used, we can use any valid identifier but ensure use * before an identifier. 
+*args are beneficial when we don't know how many arguments could be passed in a function. Args are arguments contained in a tuple and we can also iterate on args. To indicate *args as argument, the symbol ( * ) known as the unpacking operator. The *args is not a strict keyword to be used, we can use any valid identifier but ensure use * before an identifier.
 
-```python 
+```python
 def sum(*numbers):
     total_sum = 0
     for number in numbers:
