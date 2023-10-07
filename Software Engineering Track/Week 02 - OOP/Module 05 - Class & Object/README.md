@@ -9,7 +9,7 @@ A class contains two main properties:
 ## ```self``` keyword in class methods
 The '**self**' keyword is a mendatory argument (you can use other indentifier) to have in a class method, it refers the current object or instance of the class. 
 
-⚠️ In the context of the class method's ```self``` argument, there's no need to explicitly provide a value at its position; the object will be automatically passed to the self argument. Therefore, if a method only has the 'self' argument and no other arguments, there's no need to manually pass anything to it.
+> ⚠️ In the context of the class method's ```self``` argument, there's no need to explicitly provide a value at its position; the object will be automatically passed to the self argument. Therefore, if a method only has the 'self' argument and no other arguments, there's no need to manually pass anything to it.
 
 Suppose have a class ClassA which contains a method methodA defined as:
 ```python 
@@ -44,3 +44,7 @@ class myClass:
 
 ## Class attributes vs instance attributes
 Class attributes shared and accessible to all it's objects whereas an instance attribute is only accessible to a particular object.
+
+### ```__repr__``` method
+__repr__ is a special method that used for represents. By using it, you can print the object and see the details or attributes of the object.
+
