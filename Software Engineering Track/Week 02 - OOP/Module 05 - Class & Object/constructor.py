@@ -22,3 +22,4 @@ class Phone:
 
 buyer = Phone("Jack", "Apple", "15000", "India")
 buyer.checkDetails()
+

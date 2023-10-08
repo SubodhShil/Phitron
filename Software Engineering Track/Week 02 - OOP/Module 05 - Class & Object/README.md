@@ -46,5 +46,5 @@ class myClass:
 Class attributes shared and accessible to all it's objects whereas an instance attribute is only accessible to a particular object.
 
 ### ```__repr__``` method
-__repr__ is a special method that used for represents a object details. By using it, you can print the object and see the details like attributes of the object.
+__repr__ is a special method that used for representing object details. By using it, you can print the object and see the details like attributes of the object.
 
