@@ -6,7 +6,7 @@ class Shopping:
         self.name = name            # instance attribute
         self.location = location    # instance attribute
 
-    @classmethod
+    @classmethod                    # decorator specifies a class method
     def serverError(self):
         print("404")
 
@@ -26,7 +26,7 @@ class Shopping:
             self.serverError()
 
     # staic method can be used without instance or object
-    @staticmethod
+    @staticmethod                  # decorator specifies a class method
     def offer(giftCard: bool):
         if giftCard:
             giftCardValue = int(input())

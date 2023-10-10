@@ -36,4 +36,24 @@ when you inherit a abstract class as a parent to the child class, the child clas
 
 "Poly" means many, "morph" means shape.
 
+## Access Modifiers
+There is not specific keyword to instantiate access and visibility of a class attributes. Instead it do it differently without mentioning any keyword.
+
+```python
+class DemoClass:
+    # This is a public method
+    # A public method name follows regular naming convention, that precede by nothing
+    def publicMethod(self):
+        pass
+        
+    # This is a protected method
+    # A procted method name is precede by single underscore(_)
+    def _protectedMethod(self):
+        pass
+
+    # This is a private method
+    # A private method name is precede by double underscore(__)
+    def __privateMethod(self):
+        pass
+```
 
