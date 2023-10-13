@@ -28,8 +28,20 @@ class demoClass:
 demoObject = demoClass()
 print(demoObject.demo) 
 ```
-## Inner function
-Function is a first class object in Python. That means functions can be passed like regular variables or data structures. 
+## Wrapper function
+
+### Inner function
+Function is a first class object in Python. That means functions can be passed like regular variables or data structures. We can pass function as a parameter in another function.
+
+```python
+def hola(pass_func):
+    return pass_func
+
+def message(msg):
+    return msg
+
+print(message('message says hola'))
+```
 
 ```python
 def f1():
@@ -49,22 +61,69 @@ f2(f1)
 
 &nbsp;
 
-1. We can have nested function, that means a function that declared inside another function. 
+> #### The wrapper function is a function that can be used to wrap another function. When working with a function, that we don't want to change it's actual function signature but want to test or do additional things around the function, wrapper comes with benefits. To do this we can use nested functions, that means a function that declared inside another function. 
 
-    ```python
-    def outer_func():
-        def inner_func():
-            return "inner"
-        return inner_func
-    ```
+```python
+def outer_func():
+    def inner_func():
+        return "inner"
+    return inner_func
+```
 
-2. We can pass function as a parameter in another function.
-   ```python
-    def hola(pass_func):
-        return pass_func
+The example is still not a wrapper function. It would be called as a wrapper function if the receive a function as parameter. The inner_func() here will call the argument function received by the outer_func(). The addition task will be done inside inner_func(). Here is a template for wrapping functions.
 
-    def message(msg):
-        return msg
-    
-    print(message('message says hola'))
-   ```
+```python
+# Wrapper function
+def outer_func(func_as_arg):
+    def inner_func_wrapper():
+        # additional task
+        func_as_arg()
+        # additional task
+
+    return inner_func_wrapper
+```
+
+To invoke the wrapper function
+```python
+def outer_func(func_as_arg):
+    def inner_func_wrapper():
+        # additional task
+        print("additional task 1")
+
+        # invoking parameter function
+        func_as_arg()
+
+        # additional task
+        print("additional task 2")
+
+    return inner_func_wrapper
+
+def test():
+    print("Testing")
+
+outer_func(test)()
+```
+
+We can use decorator to invoke the wrapper function easily. 
+
+```python
+def outer_func(func_as_arg):
+    def inner_func_wrapper():
+        # additional task
+        print("additional task 1")
+
+        # invoking parameter function
+        func_as_arg()
+
+        # additional task
+        print("additional task 2")
+
+    return inner_func_wrapper
+
+# With decorator
+@outer_func
+def test():
+    print("Testing")
+
+test()
+```
