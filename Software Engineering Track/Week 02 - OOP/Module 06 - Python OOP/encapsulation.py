@@ -1,8 +1,8 @@
 class Bank:
     def __init__(self, holder_name, initial_deposite) -> None:
-        self.holder_name = holder_name              # public
-        self.__initial_deposite = initial_deposite  # private
-        self._balance = self.__initial_deposite     # protected
+        self.holder_name = holder_name              # public attribute 
+        self.__initial_deposite = initial_deposite  # private attribute
+        self._balance = self.__initial_deposite     # protected attribute 
 
     def deposite(self, amount):
         self._balance += amount

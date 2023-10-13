@@ -4,7 +4,7 @@
 1. Abstraction
 2. Encapsulation
 3. Inheritance 
-4. Polymorphism 
+4. Polymorphism
 
 Attributes can be occur multiple time in various classes.
 
