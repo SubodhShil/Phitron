@@ -127,3 +127,25 @@ def test():
 
 test()
 ```
+
+## Composition and "has a" relation
+The inheritance said to be "is a" relation. 
+
+## UML Diagrams
+1. UML stands for **Unified Modeling Language". 
+2. It used for represent object oriented system components like (mainly 4):
+    - classes, 
+    - attributes,
+    - methods or operations
+    - relationship among objects
+3. The representation uses visual or graphical notation called diagram to discribe complex structure.
+
+Types:
+1. Class diagram 
+2. Usecase diagram
+3. Sequence diagram 
+4. Activity diagram
+
+## Design Pattern
+- Generalize and reusable solution to a commonly occurring problem in software design. 
+- 
