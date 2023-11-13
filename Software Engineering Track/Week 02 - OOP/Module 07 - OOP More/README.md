@@ -148,4 +148,5 @@ Types:
 
 ## Design Pattern
 - Generalize and reusable solution to a commonly occurring problem in software design. 
+- **Singleton design pattern**: One instance for one class in the source code.
 - 
