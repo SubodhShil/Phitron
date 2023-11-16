@@ -31,11 +31,14 @@ class Rider(User):
     def update_location(self, current_location):
         self.current_location = current_location
 
-    def request_ride(self, destination, current_location = None):
+    def request_ride(self, ride_sharing, destination, current_location = None):
         if not self.current_ride:
             ride_request = Ride_Request(self, destination)
-            ride_matcher = Ride_Matching()
+            ride_matcher = Ride_Matching(ride_sharing.drivers)
             self.current_ride = ride_matcher.find_drivers(ride_request)
+    
+    def show_current_ride(self):
+        print(self.current_ride)
 
 class Driver(User):
     def __init__(self, name, email, number, nid, current_location) -> None:
@@ -73,23 +76,25 @@ class Ride:
         self.rider.wallet -= self.estimated_fare
         self.driver.wallet += self.estimated_fare
 
+    def __repr__(self) -> str:
+        return f'\nRide Details\n-------------\nStart location: {self.start_location}\nDestination: {self.end_location}'
+
+
 class Ride_Request:
     def __init__(self, rider:Rider, end_location) -> None:
         self.rider = rider
         self.end_location = end_location
 
 class Ride_Matching:
-    def __init__(self) -> None:
-        self.available_drivers = []
+    def __init__(self, drivers) -> None:
+        self.available_drivers = drivers
 
     def find_drivers(self, ride_request:Ride_Request):
         if len(self.available_drivers) > 0:
-            # TODO: find the closest driver near the rider and othe cirteria
             driver_index = 0
             driver = self.available_drivers[driver_index]
             ride = Ride(ride_request.rider.current_location, ride_request.end_location)
             driver.accept_ride(ride)
-            
             return ride
 
 class Vehicle(ABC):
@@ -139,4 +144,16 @@ class Ride_Sharing:
     def add_driver(self, driver:Driver):
         self.drivers.append(driver)
 
-    
+    def __repr__(self) -> str:
+        return f"{self.company_name} is a family of {len(self.riders)} riders and {len(self.drivers)} drivers"
+
+
+# Class integration
+super_ride = Ride_Sharing('Super Ride')
+rider1 = Rider("Rohit Sharma", "rohit@icc.com", 880113,  2341, "Mumbai", 1200)
+super_ride.add_rider(rider1)
+driver1 = Driver("Tulok", "tulok@driver.com", 885521, 5648, "Noida")
+super_ride.add_driver(driver1)
+print(super_ride)
+rider1.request_ride(super_ride, "Delhi")
+rider1.show_current_ride()
