@@ -1,8 +1,8 @@
 > # ```Data vs Information```
 
-### <ins>**Data**</ins>: Data is the raw product of valueable asset, or building block of information.
+<ins>**Data**</ins>: Data is the raw product of valueable asset, or building block of information.
 
-### <ins>**Information**</ins>: Information is organized and meaningful way of representing data that is valuable for an organization.
+<ins>**Information**</ins>: Information is organized and meaningful way of representing data that is valuable for an organization.
 
 ## Database
 Database is a solution for keeping data organize in a central place. Database plays important role when it comes to convert data into information.
@@ -41,4 +41,13 @@ Advantages:
 6. Parallel acessing: Multiple data access can be done at a time. 
 
 ## ```Key, Primary Key```
+
+![](./key_module_01.png)
+
+**Primary key**: A primary key is an unique value belong to a 
+field (unique field), that is used for accessing other field value on the same record  or row of a table.
+
+**Composite Primary Key**: A composite key consists of two or more field values to uniquely identify value or data from the same record. 
+
+**Foreign Key**: A key is said to be a foreign key if it is primary key of a table and act as a field of other tables. Foreign key establish relationship between multiple tables. 
 
