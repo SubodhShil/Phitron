@@ -51,3 +51,9 @@ field (unique field), that is used for accessing other field value on the same r
 
 **Foreign Key**: A key is said to be a foreign key if it is primary key of a table and act as a field of other tables. Foreign key establish relationship between multiple tables. 
 
+
+Types of relation: 
+1. One to one
+2. One to many 
+3. Many to one
+4. Many to many
