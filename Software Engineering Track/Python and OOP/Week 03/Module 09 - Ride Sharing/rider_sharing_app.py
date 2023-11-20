@@ -36,7 +36,7 @@ class Rider(User):
             ride_request = Ride_Request(self, destination)
             ride_matcher = Ride_Matching(ride_sharing.drivers)
             self.current_ride = ride_matcher.find_drivers(ride_request)
-    
+
     def show_current_ride(self):
         print(self.current_ride)
 
