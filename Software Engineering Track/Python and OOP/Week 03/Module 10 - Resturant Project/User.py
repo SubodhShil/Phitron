@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class User(ABC):
     def __init__(self, name, phone, email, address) -> None:
         self.name = name
@@ -11,6 +12,7 @@ class Customer(User):
     def __init__(self, name, phone, email, address, money) -> None:
         self.wallet = money
         self.__order = None
+        self.due_amount = 0
         super().__init__(name, phone, email, address)
 
     @property
@@ -23,13 +25,13 @@ class Customer(User):
 
     def place_order(self, order):
         self.order = order
-        print(f"{self.name} placed an order {order.items}")
+        self.due_amount += order.bill
+        print(f"{self.name} placed an order with bill: {order.bill}")
 
     def eat_food(self, order):
         pass
 
     def pay_for_order(self, amount):
-        # TODO: submit amount to manager
         pass
 
     def give_tips(self, tips_amount):
@@ -40,10 +42,7 @@ class Customer(User):
 
 class Employee(User):
     def __init__(self, name, phone, email, address, salary, starting_date, department) -> None:
-        super().__init__(name)
-        self.phone = phone
-        self.email = email
-        self.address = address
+        super().__init__(name, phone, email, address)
         self.salary = salary
         self.due = salary
         self.starting_date = starting_date
@@ -53,11 +52,11 @@ class Employee(User):
         self.due -= payment_amount
 
 class Chef(Employee):
-    def __init__(self, name, phone, email, address, salary, starting_date, department, cooking_item) -> None:
-        super().__init__(name, phone, email, address, salary, starting_date, department, cooking_item)
+    def __init__(self, name, phone, email, address, salary, starting_date, department, cooking_item: object) -> None:
+        super().__init__(name, phone, email, address, salary, starting_date, department)
         self.cooking_item = cooking_item
 
-class Server(Employee):
+class Waiter(Employee):
     def __init__(self, name, phone, email, address, salary, starting_date, department) -> None:
         self.tips_earning = 0
         super().__init__(name, phone, email, address, salary, starting_date, department)

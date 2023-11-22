@@ -27,7 +27,7 @@ class Menu:
         self.burgers = []
         self.drinks = []
 
-    def add_menu_items(self, item_type, item):
+    def add_menu_items(self, item_type, item:object):
         if item_type == 'pizza':
             self.pizzas.append(item)
         elif item_type == 'burger':
@@ -51,12 +51,15 @@ class Menu:
             print("Invalid item")
     
     def show_menu(self):
+        print("Pizza\n------")
         for pizza in self.pizzas:
-            print(f"{pizza.name} price:  {pizza.price}")
+            print(f"{pizza.name}: ৳{pizza.price}")
         
+        print("\nBurger\n-------")
         for burger in self.burgers:
-            print(f"{burger.name} price: {burger.price}")
+            print(f"{burger.name}: ৳{burger.price}")
         
+        print("\nDrinks\n--------")
         for drink in self.drinks:
-            print(f"{drink.name} price: {drink.price}")
+            print(f"{drink.name}: ৳{drink.price}")
 
