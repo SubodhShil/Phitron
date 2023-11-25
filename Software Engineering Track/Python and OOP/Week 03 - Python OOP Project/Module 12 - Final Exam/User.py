@@ -4,7 +4,6 @@ import pwinput
 import random
 from beautifultable import BeautifulTable
 
-
 # Rich library "console" object
 console = Console()
 
@@ -12,7 +11,7 @@ class User:
     def __init__(self, allUserVault:list) -> None:
         self.allUserVault = allUserVault # [{userName:key, [password, email:str, address:str, account_type, account_number]:value}]
         self.currentUserVault:dict = {}
-        self.balance = 0
+        self.__balance = 0
         self.account_number = None
         
         # * Creating display table with "BeautifulTable" package
@@ -33,7 +32,21 @@ class User:
 
     # ! This class supervise all user deposite, withdraw and error regarding it
     def financialTransactions(self):
-        pass
+        
+        transactionOptions = [
+            "Deposite money",
+            "Withdraw money"
+        ]
+        userOptions = [inquirer.List('transactionOptions', message="I would like to: ", choices = transactionOptions)]
+        answers = inquirer.prompt(userOptions)
+        selectedOption = answers['transactionOptions']
+        
+        if selectedOption == transactionOptions[0]:
+            deposite_amount = int(input("Enter deposite amount: "))
+            self.__balance += deposite_amount
+            console.print(f"[bold green]After deposite your total balance: {self.__balance} taka[/]")
+        else:
+            pass
 
     def userAuth(self):
 
