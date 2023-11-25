@@ -32,7 +32,7 @@
     display: inline-block;
 }
 
-section > div {
+.flex-section > div {
     margin: 10px;
     border: 2px solid lightgreen;
     padding: 5px;
@@ -44,7 +44,7 @@ section > div {
     align-items: center;
 }
 
-section {
+.flex-section {
     display: flex;
     justify-content: space-around;
     /* Row wise center */
@@ -53,4 +53,30 @@ section {
     flex-direction: column-reverse;
     flex-direction: row-reverse;
     flex-wrap: wrap;
+}
+
+.position-section {
+}
+
+.position-section > div {
+    height: 300px;
+    width: 300px;
+}
+
+.position-section > div:nth-child(1) {
+    background-color: orangered;
+    /* default position is static */
+    position: absolute;
+    /* z-index: -1; */
+}
+
+.position-section > div:nth-child(2) {
+    position: relative;
+    background-color: limegreen;
+    height: 500px;
+    width: 500px;
+}
+
+.position-section > div:nth-child(3) {
+    background-color: orchid;
 }
