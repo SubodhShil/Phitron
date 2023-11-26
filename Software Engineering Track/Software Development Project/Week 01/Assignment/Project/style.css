@@ -3,7 +3,21 @@
 * {
     font-family: "Inter", sans-serif;
     font-family: "Lato", sans-serif;
-    font-family: "Montserrat", sans-serif;
     font-family: "Poppins", sans-serif;
     font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif !important;
+}
+
+#navbar {
+    background-color: #1a187a !important;
+}
+
+.carousel-item {
+    height: 400px;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
 }

@@ -3,22 +3,46 @@ import inquirer
 import pwinput
 import random
 from beautifultable import BeautifulTable
+from datetime import datetime
 
 # Rich library "console" object
 console = Console()
 
 class User:
     def __init__(self, allUserVault:list) -> None:
+    
         self.allUserVault = allUserVault # [{userName:key, [password, email:str, address:str, account_type, account_number]:value}]
+        
         self.currentUserVault:dict = {}
+        # A user can have multiple accounts
+        self.current_user_accounts = []
         self.__balance = 0
         self.account_number = None
+        self.loan_ask_time = 2
+        self.user_loan = 0
         
-        # * Creating display table with "BeautifulTable" package
+        # * Auth options 
+        self.auth_options = [
+            "Login existing account",
+            "Create new account"
+        ]
+
+        # * transactional history 
+        self.transaction_history = [] # list of tuple [(time_when_transaction_was_made, transaction_type,  amount_of_transaction)]
+
+        # * Table for displaying user data table
         self.current_user_bank_details = BeautifulTable()
         self.current_user_bank_details.columns.header = ["Name", "Password", "Email", "Address", "Account Type", "Account Number"]
         self.current_user_bank_details.set_style((BeautifulTable.STYLE_BOX_DOUBLED))
 
+        # * List of user accounts details table 
+        self.user_accounts_tables = []
+        
+        # * Table for display user transaction history table
+        self.current_uesr_transaction_history = BeautifulTable()
+        self.current_uesr_transaction_history.columns.header = ["Transaction Time", "Type of Transaction", "Amount"]
+
+    # * User -> (3)
     def generate_account_number(self, name, mail, address, account_type):
 
         special_chars = "!@#$%^&*()_+-=[]{}|;:,.<>?~" 
@@ -30,32 +54,99 @@ class User:
 
         return make_random_acnt_number
 
-    # ! This class supervise all user deposite, withdraw and error regarding it
+    # & This class supervise all user deposite, withdraw and error regarding it
+    # * User -> (4)
     def financialTransactions(self):
-        
-        transactionOptions = [
-            "Deposite money",
-            "Withdraw money"
-        ]
-        userOptions = [inquirer.List('transactionOptions', message="I would like to: ", choices = transactionOptions)]
-        answers = inquirer.prompt(userOptions)
-        selectedOption = answers['transactionOptions']
-        
-        if selectedOption == transactionOptions[0]:
-            deposite_amount = int(input("Enter deposite amount: "))
-            self.__balance += deposite_amount
-            console.print(f"[bold green]After deposite your total balance: {self.__balance} taka[/]")
-        else:
-            pass
 
+        while True:
+            transactionOptions = [
+                "Deposite money",
+                "Withdraw money", 
+                "Check previous transaction history", 
+                "Loan",
+                "Transfer Money",
+                "Exit application"
+            ]
+            userOptions = [inquirer.List('transactionOptions', message="I would like to", choices = transactionOptions)]
+            answers = inquirer.prompt(userOptions)
+            selectedOption = answers['transactionOptions']
+
+            current_transaction = ()
+
+            if selectedOption == transactionOptions[0]:
+                deposite_amount = float(input("Enter deposite amount: "))
+                self.__balance += deposite_amount
+
+                # * Collecting deposite history 
+                transaction_time = datetime.now().isoformat()
+                current_transaction = (transaction_time, selectedOption, deposite_amount)
+                self.transaction_history.append(current_transaction)
+                self.current_uesr_transaction_history.rows.append([transaction_time, selectedOption, str(deposite_amount) + " Taka"])
+
+                # * Display currently happened transaction in table
+                console.print(f"[bold green]Your transaction transcript is below")
+                print(self.current_uesr_transaction_history)
+
+                console.print(f"[bold green]After deposite your total balance: {self.__balance} taka[/]")
+
+            elif selectedOption == transactionOptions[1]:
+
+                withdrawal_amount = float(input("Enter withdraw amount: "))
+                if self.__balance >= withdrawal_amount:
+
+                    self.__balance -= withdrawal_amount
+
+                    # * Collecting withdrawal history 
+                    transaction_time = datetime.now().isoformat()
+                    current_transaction = (transaction_time, selectedOption, withdrawal_amount)
+                    self.transaction_history.append(current_transaction)
+                    self.current_uesr_transaction_history.rows.append([transaction_time, selectedOption, str(withdrawal_amount) + " Taka"])
+
+                    # * Display currently happened transaction in table
+                    console.print(f"[bold green]Your transaction transcript is below")
+                    print(self.current_uesr_transaction_history)
+
+                    console.print(f"[yellow]You have withdrawn amount: {withdrawal_amount} taka\nCurrent balance: {self.__balance}")
+                else:
+                    console.print(f"[bold red underline]Withdrawal amount exceeded")
+
+            elif selectedOption == transactionOptions[2]:
+                self.check_transaction_history()
+                
+            elif selectedOption == transactionOptions[3]:
+                self.take_loan()
+
+            else:
+                print(f"Exiting the application")
+                exit()
+
+    # ~ User -> (4)
+    def available_balance(self):
+        return f"Your current available balance is: {self.__balance}"
+
+    # * User -> (5)
+    def check_transaction_history(self):
+
+        if not self.transaction_history:
+            print(f"You've no transaction record")
+        else:
+
+            # ? Have error
+            for transaction in self.transaction_history:
+                for details in transaction:
+                    print(f"{details[0]}\t{details[1]}\t{details[2]}")
+                print("")
+
+    # * User -> (1)
     def userAuth(self):
 
         isSuccessfulAuthentication: bool = False
+
         generalUserOptions = [
             "Login existing account",
             "Create new account"
         ]
-        userOptions = [inquirer.List('generalUserOptions', message="Choice: ", choices = generalUserOptions)]
+        userOptions = [inquirer.List('generalUserOptions', message="Choice", choices = generalUserOptions)]
         answers = inquirer.prompt(userOptions)
         generalUserSelectedOption = answers['generalUserOptions']
 
@@ -117,17 +208,50 @@ class User:
 
             # collecting all user details in a tuple to show in a table
             self.current_user_bank_details.rows.append([userName, "●●●●●", userEmail, userAddress, generalUserSelectedOption, self.account_number])
+            
+            # Store account details table in list 
+            self.user_accounts_tables.append(self.current_user_bank_details)
+            
+            # Display account details in table 
+            print(self.current_user_bank_details)
 
             # ! Now store new current user to the allUserVault
             self.allUserVault.append(self.currentUserVault)
             isSuccessfulAuthentication = True
 
-            console.print(f"[bold yellow]\nThanks for choosing us for your service {userName}\n[/]")
+            self.current_user_accounts.append(self.currentUserVault)
 
-            self.displayUserDetails()
+            console.print(f"[bold yellow]\nThanks for choosing us for your service {userName}\n[/]")
 
             if isSuccessfulAuthentication == True:
                 self.financialTransactions()
 
+    # * User -> (6)
+    def take_loan(self):
+
+        if self.loan_ask_time >= 1:
+            loan_amount = float(input("Enter the amount you ask for loan: "))
+            console.print(f"[bold yellow]Loan granted[/]")
+
+            self.__balance += loan_amount
+            self.user_loan += loan_amount
+            self.loan_ask_time -= 1
+            
+            # TODO: Loan transaction history
+            
+        else:
+            print(f"Loan limit exceed")
+
+    # * User -> (7)
+    def money_transfer(self):
+        pass
+
     def displayUserDetails(self):
-        print(self.current_user_bank_details)
+        if self.current_user_accounts.size() >= 1:
+            print(f"The user has {len(self.current_user_accounts) + 1} accounts")
+            for i in range(len(self.user_accounts_tables)):
+                print("Account {i + 1} details\n--------------------------")
+                print(self.current_user_bank_details)
+        else:
+            print("No accounts created")
+

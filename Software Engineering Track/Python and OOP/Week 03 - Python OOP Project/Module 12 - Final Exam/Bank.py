@@ -6,48 +6,64 @@ import pwinput
 console = Console()
 
 # external file import
+from Admin import Admin
 from User import User
 
-def authentication():
-    # User credentials
-    allUserVault = []
+class Bank:
+
+    def __init__(self) -> None:
+        pass
     
-    console.print(f"[bold green underline]Welcome to Royal Earth Bank")
-    console.print(f"[bold yellow]\nSelect your user type")
+    def main_menu():
+        # User credentials
+        allUserVault = []
+        
+        # * Bank object
+        general_bank_user = User(allUserVault)
+        
+        # * Admin object
+        bank_admin = Admin()
+        
+        console.print(f"[bold green underline]Welcome to Royal Earth Bank")
+        console.print(f"[bold yellow]\nSelect your user type")
 
-    authOptions = [
-        "Admin",
-        "User",
-        "Employee",
-        "Exit Application"
-    ]
+        authOptions = [
+            "Admin",
+            "User",
+            "Employee",
+            "See all accounts",
+            "Exit Application"
+        ]
 
-    allUserOptions = [inquirer.List('authOptions', message = "Choice: ", choices=authOptions)]
-    answers = inquirer.prompt(allUserOptions)
-    allUserSelectedOption = answers['authOptions']
+        allUserOptions = [inquirer.List('authOptions', message = "Choice: ", choices=authOptions)]
+        answers = inquirer.prompt(allUserOptions)
+        allUserSelectedOption = answers['authOptions']
 
-    while True:
-        # * Manager-Admin Authentication
-        if allUserSelectedOption == authOptions[0]:
-            adminName = input(f"Enter Admin Name: ")
-            adminPassword = pwinput.pwinput("Enter Admin Password: ")
+        while True:
 
-            if adminName == "Subodh" and adminPassword == "admin":
-                console.print(f"[bold green]Welcome Manager {adminName}[/]")
+            # * Manager-Admin Authentication
+            if allUserSelectedOption == authOptions[0]:
+                
+                adminName = input(f"Enter Admin Name: ")
+                adminPassword = pwinput.pwinput("Enter Admin Password: ")
 
-        # * User Authentication
-        elif allUserSelectedOption == authOptions[1]:
-            general_bank_user = User(allUserVault)
-            general_bank_user.userAuth()
+                if bank_admin.isAdmin(adminName, adminPassword):
+                    console.print(f"[bold green]Welcome Manager {adminName}[/]")
+                    bank_admin.admin_privileges()
+
+            # * User Authentication
+            elif allUserSelectedOption == authOptions[1]:
+                general_bank_user.userAuth()
+
+            elif allUserSelectedOption == authOptions[3]:
+                general_bank_user.current_user_accounts()
             
-        elif allUserSelectedOption == authOptions[-1]:
-            console.print(
-                f"[bold red]Thanks for using our bank, see you soon!![/]")
-            break
+            elif allUserSelectedOption == authOptions[-1]:
+                console.print(f"[bold red]Thanks for using our bank, see you soon!![/]")
+                break
 
 def main():
-    authentication()
+    Bank.main_menu()
 
 if __name__ == '__main__':
     main()
-    
