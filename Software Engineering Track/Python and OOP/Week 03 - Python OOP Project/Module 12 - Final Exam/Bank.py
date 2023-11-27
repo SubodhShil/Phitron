@@ -50,7 +50,7 @@ class Bank:
 
             # * User Authentication
             elif allUserSelectedOption == authOptions[1]:
-                general_bank_user.userAuth()
+                general_bank_user.user_menu()
 
             elif allUserSelectedOption == authOptions[3]:
                 general_bank_user.current_user_accounts()

@@ -85,7 +85,7 @@ class Admin:
         self.admin_as_user = User()
 
         # Admin can create an account just like a general user
-        self.admin_as_user.userAuth()
+        self.admin_as_user.user_menu()
         
         # add new account to all_user_vault
         self.all_user_vault = self.get_user_credentials.all_user_vault
@@ -113,6 +113,7 @@ class User:
 
         # ~ Current user credentials
         self.current_user_vault:dict = {}
+
         # A user can have multiple accounts
         self.current_user_accounts = []
         self.__balance = 0
@@ -137,6 +138,7 @@ class User:
             "Check previous transaction history", 
             "Loan",
             "Transfer Money",
+            "Back to user menu", 
             "Exit application"
         ]
         
@@ -183,8 +185,8 @@ class User:
 
 
     # * User -> (1)
-    def userAuth(self):
-
+    def user_menu(self):
+        console.print(f"[bold orchid]\nWelcome to the User Menu[/]")
         isSuccessfulAuthentication: bool = False
         
         auth_selected_option = self.user_options(self.auth_options)
@@ -228,7 +230,7 @@ class User:
             user_account_details.append(userAddress)
 
             # * Choose account type
-            console.print(f"[bold green]Enter your suitable account type[/]")
+            console.print(f"[bold green]\nEnter your suitable account type[/]")
             
             account_type_selected_option = self.user_options(self.account_type_options)
 
@@ -318,6 +320,10 @@ class User:
             elif selected_transaction_option == self.transaction_options[3]:
                 self.take_loan()
 
+            # Back to user menu
+            elif selected_transaction_option == self.transaction_options[5]:
+                self.user_menu()
+            
             else:
                 print(f"Exiting the application")
                 exit()
