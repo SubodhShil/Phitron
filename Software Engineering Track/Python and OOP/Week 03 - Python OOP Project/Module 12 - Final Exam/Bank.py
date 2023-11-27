@@ -1,3 +1,6 @@
+
+# ** Bank.py only used for run the application as entrypoint
+
 from rich.console import Console
 import inquirer
 import pwinput
@@ -6,24 +9,18 @@ import pwinput
 console = Console()
 
 # external file import
-from Admin import Admin
-from User import User
+from Logic import Admin, User
 
 class Bank:
 
-    def __init__(self) -> None:
-        pass
-    
     def main_menu():
-        # User credentials
-        allUserVault = []
-        
-        # * Bank object
-        general_bank_user = User(allUserVault)
-        
+
+        # * User object
+        general_bank_user = User()
+
         # * Admin object
         bank_admin = Admin()
-        
+
         console.print(f"[bold green underline]Welcome to Royal Earth Bank")
         console.print(f"[bold yellow]\nSelect your user type")
 
