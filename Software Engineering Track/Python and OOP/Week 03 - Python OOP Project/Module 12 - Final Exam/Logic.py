@@ -2,8 +2,10 @@ from rich.console import Console
 import inquirer
 import pwinput
 import random
+import secrets
 from beautifultable import BeautifulTable
 from datetime import datetime
+
 
 # Rich library "console" object
 console = Console()
@@ -138,6 +140,7 @@ class User:
             "Check previous transaction history", 
             "Loan",
             "Transfer Money",
+            "Check your bank balance",
             "Back to user menu", 
             "Exit application"
         ]
@@ -172,17 +175,8 @@ class User:
 
 
     # * User -> (3)
-    def generate_account_number(self, name, mail, address, account_type):
-
-        special_chars = "!@#$%^&*()_+-=[]{}|;:,.<>?~" 
-        make_random_acnt_number = account_type[0] + str(random.randint(10, 299)) + random.choice(special_chars)
-        for i in range (5):
-            make_random_acnt_number += random.choice(mail)
-            make_random_acnt_number += random.choice(name)
-            make_random_acnt_number += random.choice(address)
-
-        return make_random_acnt_number
-
+    def generate_account_number(self):
+        return secrets.token_hex(5)
 
     # * User -> (1)
     def user_menu(self):
@@ -233,18 +227,17 @@ class User:
             console.print(f"[bold green]\nEnter your suitable account type[/]")
             
             account_type_selected_option = self.user_options(self.account_type_options)
-
             user_account_details.append(account_type_selected_option)
 
             # generate account number and store to the list
-            self.account_number = self.generate_account_number(userName, userEmail, userAddress, auth_selected_option)
+            self.account_number = self.generate_account_number()
             user_account_details.append(self.account_number)
 
             # storing new user data to the dictionary
             self.current_user_vault[userName] = user_account_details
 
             # collecting all user details in a tuple to show in a table
-            self.current_user_bank_details.rows.append([userName, "●●●●●", userEmail, userAddress, auth_selected_option, self.account_number])
+            self.current_user_bank_details.rows.append([userName, "●●●●●", userEmail, userAddress, account_type_selected_option, self.account_number])
             
             # Store account details table in list 
             self.user_accounts_tables.append(self.current_user_bank_details)
@@ -265,7 +258,6 @@ class User:
 
 
     # & This method supervise all user deposite, withdraw and error regarding it
-    # * User -> (4)
     def financialTransactions(self):
 
         while True:
@@ -320,8 +312,16 @@ class User:
             elif selected_transaction_option == self.transaction_options[3]:
                 self.take_loan()
 
-            # Back to user menu
+            # Transfer money
+            elif selected_transaction_option == self.transaction_options[4]:
+                self.money_transfer()
+            
+            # Check available balance 
             elif selected_transaction_option == self.transaction_options[5]:
+                self.available_balance()
+
+            # Back to user menu
+            elif selected_transaction_option == self.transaction_options[6]:
                 self.user_menu()
             
             else:
@@ -329,22 +329,24 @@ class User:
                 exit()
 
 
-    # ~ User -> (4)
+    # * User -> (4)
     def available_balance(self):
-        return f"Your current available balance is: {self.__balance}"
+        console.print(f"[bold yellow]Your current available balance is: {self.__balance}[/]")
 
     # * User -> (5)
     def check_transaction_history(self):
-
         if not self.transaction_history:
             print(f"You've no transaction record")
-
         else:
             # ? Have error
             for transaction in self.transaction_history:
                 for details in transaction:
-                    print(f"{details[0]}\t{details[1]}\t{details[2]}")
+                    if isinstance(details, (list, tuple)):
+                        print(f"{details[0]}\t{details[1]}\t{details[2]}")
+                    else:
+                        print(details)
                 print("")
+
 
     # * User -> (6)
     def take_loan(self):
@@ -365,7 +367,27 @@ class User:
 
     # * User -> (7)
     def money_transfer(self):
-        pass
+        receiver_name = input("Enter receiver account name: ")
+        receiver_account_number = input("Enter receiver account number: ")
+        
+        for item in bank_manager.all_user_vault:
+            
+            # key is a dictionary
+            for key in item:
+        
+                if key == receiver_name and item[key][4] == receiver_account_number:
+                    print(f"Receiver account found")
+                    send_amount = float(input("Enter amount: "))
+                    if self.__balance >= send_amount:
+                        self.__balance -= send_amount
+                        console.print(f"[bold green]\nMoney transfer successful!![/]")
+                    else:
+                        print(f"You don't have sufficient amount to send money")
+                    
+                    self.user_options(self.transaction_options)
+
+            console.print("[bold red]Account does not exist[/]")
+            self.user_options(self.transaction_options)
 
     def displayUserDetails(self):
         if self.current_user_accounts.size() >= 1:
@@ -379,7 +401,6 @@ class User:
 
 # ** Bank admin object
 bank_manager = Admin()
-
 
 # ** Bank user
 bank_user = User()
