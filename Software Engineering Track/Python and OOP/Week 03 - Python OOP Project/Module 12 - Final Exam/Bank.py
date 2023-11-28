@@ -1,4 +1,5 @@
 from rich.console import Console
+from rich.pretty import pprint
 import inquirer
 import pwinput
 import shutil
@@ -6,6 +7,7 @@ import secrets
 from beautifultable import BeautifulTable
 from datetime import datetime
 
+# ^ Admin Name: Subodh, Password: admin
 
 # Rich library "console" object
 console = Console()
@@ -80,14 +82,16 @@ class Admin:
         # ~ structure: [{userName:key, [password, email:str, address:str, account_type, account_number]:value}]
         self.all_user_vault = []
 
-        # ^ Bank reserve 
+        # ^ Bank reserve: Assuming the bank has 1M taka initially 
         self.bank_total_reserve_balance = 0
 
         self.is_loan_active = True
 
-        self.is_bankrupt = False
+        self.is_bankrupt = True
 
         self.maximum_loan_ask_time = 2
+        
+        self.total_loan_amount_grant = 0
 
     def isAdmin(self, name: str, password: str):
     
@@ -122,14 +126,13 @@ class Admin:
                 self.see_bank_reserve()
 
             elif current_selected_option == self.options[4]:
-                self.loan_features()
+                self.loan_amount_granted()
                 
             elif current_selected_option == self.options[5]:
-                bank.main_menu()
+                Bank.main_menu()
 
             else:
-                print(f"Exiting the application Manager {self.name}")
-                exit()
+                exit_application()
 
     # * Admin option -> 1
     def create_account(self):
@@ -140,33 +143,58 @@ class Admin:
     # * Admin option -> 2
     def delete_user_account(self):
 
+        console.print(f"[green underline]\nCurrently have {len(self.all_user_vault)} users[/]")
+        if len(self.all_user_vault) == 0:
+            return
+        
         target_account_name = input("Enter account name you want to delete: ")
         target_account_number = input("Enter account number: ")
         flag = False
 
-        for item in bank_manager.all_user_vault:
+        for index, item in enumerate(self.all_user_vault):
             for key, value in item.items():
                 if key == target_account_name and value[4] == target_account_number:
-                    del item[key]
+                    print(f"Details found: {value}")
+                    del self.all_user_vault[index]
                     flag = True
-                    break   
-        if flag:
-            console.print(f"[red bold]Account found, deleting[/]")
+                    break
+
+        if flag == True:
+            console.print(f"[red bold]Account found, deleting.\nCurrent have {len(self.all_user_vault)} users\n[/]")
         else:
             print("No such account found")
+        
 
     # * Admin option -> 3
     def see_all_user_accounts(self):
-        
-        print(f"Currently there are {len(self.get_user_credentials.all_user_vault)} accounts")
+    
+        console.print(f"Currently there are {len(self.all_user_vault)} accounts")
+
+        for index, item in enumerate(self.all_user_vault):
+            for key, value in item.items():
+                console.print(f"[bold yellow]User {index + 1}: {key} 👉 {value}[/]")
+
+        print("")
+
 
     # * Admin option -> 4
     def see_bank_reserve(self):
         print(f"Bank total reserve is: {self.bank_total_reserve_balance} taka")
 
     # * Admin option -> 5
-    def loan_features(self):
-        print("no")
+    def loan_amount_granted(self):
+        print(f"Bank provided loan: {self.total_loan_amount_grant} taka")
+        
+    # * Admin option -> 6
+    def loan_on_off(self):
+        print(f"Enter digit 1 to turn on and digit 0 turn off loan feature")
+        decision = int(input("Enter digit: "))
+        if decision == 0:
+            self.is_loan_active = False
+        elif decision == 1:
+            self.is_loan_active = True
+        else:
+            console.print("[red]Wrong input\n[/]")
 
 
 # ** User class
@@ -260,7 +288,7 @@ class User:
 
             if isSuccessfulAuthentication == True:
                 console.print(f"[green underline]Authentication successful!!\nWelcome {userName}\n[/]")
-                self.financialTransactions()
+                self.financial_transactions()
             else:
                 console.print(f"[bold red underline]False credentials, no such user exist\n[/]")
 
@@ -316,7 +344,7 @@ class User:
             console.print(f"[bold yellow]\nThanks for choosing us for your service {userName}\n[/]")
 
             if isSuccessfulAuthentication == True:
-                self.financialTransactions()
+                self.financial_transactions()
 
         elif auth_selected_option == self.auth_options[2]:
             Bank.main_menu()
@@ -325,7 +353,7 @@ class User:
             console.print(f"[bold red]\nExiting the application[/]")
 
     # & This method supervise all user deposite, withdraw and error regarding it
-    def financialTransactions(self):
+    def financial_transactions(self):
 
         while True:
             
@@ -336,6 +364,7 @@ class User:
             if selected_transaction_option == self.transaction_options[0]:
 
                 deposite_amount = float(input("Enter deposite amount: "))
+                # * adding deposite money to bank total revenue 
                 bank_manager.bank_total_reserve_balance += deposite_amount
                 self.__balance += deposite_amount
 
@@ -352,7 +381,11 @@ class User:
                 console.print(f"[bold green]After deposite your total balance: {self.__balance} taka[/]")
 
             elif selected_transaction_option == self.transaction_options[1]:
-
+                
+                if bank_manager.is_bankrupt == True:
+                    print(center_text("The bank is bankrupt, now sieged by BD Police, you'll be refunded your money soon"))
+                    return 
+                
                 withdrawal_amount = float(input("Enter withdraw amount: "))
                 if self.__balance >= withdrawal_amount:
 
@@ -418,14 +451,17 @@ class User:
     # * User -> (6)
     def take_loan(self):
 
-        if self.loan_ask_time >= 1:
+        if bank_manager.is_loan_active == True and self.loan_ask_time >= 1:
             loan_amount = float(input("Enter the amount you ask for loan: "))
             console.print(f"[bold yellow]Loan granted[/]")
 
-            self.__balance += loan_amount
-            self.user_loan += loan_amount
-            self.loan_ask_time -= 1
-            
+            if bank_manager.bank_total_reserve_balance < loan_amount:
+
+                self.__balance += loan_amount
+                self.user_loan += loan_amount
+                self.loan_ask_time -= 1
+                bank_manager.total_loan_amount_grant += loan_amount
+
             # TODO: Loan transaction history
             
         else:
@@ -457,6 +493,7 @@ class User:
             self.user_options(self.transaction_options)
 
     def displayUserDetails(self):
+
         if self.current_user_accounts.size() >= 1:
             print(f"The user has {len(self.current_user_accounts) + 1} accounts")
             for i in range(len(self.user_accounts_tables)):
@@ -465,9 +502,6 @@ class User:
         else:
             print("No accounts created")
 
-
-# ** Bank object 
-bank = Bank()
 
 # ** Bank admin object
 bank_manager = Admin()
@@ -480,7 +514,6 @@ def center_text(text):
     padding = (terminal_width - len(text)) // 2
     centered_text = f"{' ' * padding}{text}{' ' * padding}"
     return centered_text
-
 
 def exit_application(is_wrong_credentials:bool):
     if is_wrong_credentials:
