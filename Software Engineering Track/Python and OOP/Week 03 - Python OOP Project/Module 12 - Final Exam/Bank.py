@@ -11,7 +11,6 @@ from datetime import datetime
 
 # Rich library "console" object
 console = Console()
-current_user_flag = None
 
 class Bank:
 
@@ -71,6 +70,8 @@ class Admin:
             "Back to main menu",
             "Exit Application"
         ]
+        
+        self.current_user_flag = None
 
         # & Admin details
         self.name = "Subodh"
@@ -167,13 +168,15 @@ class Admin:
         console.print(f"Currently there are {len(self.all_user_vault)} accounts\n")
 
         for index, value in enumerate(self.all_user_vault):
+            if index == 7:
+                break
             console.print(f"[bold yellow]User {index + 1} 👉\t{value}[/]\n")
 
         print("")
 
     # * Admin option -> 4
     def see_bank_reserve(self):
-        print(f"Bank total reserve is: {self.bank_total_reserve_balance} taka")
+        console.print(f"[bold green]Bank total reserve is: {self.bank_total_reserve_balance} taka\n[/]")
 
     # * Admin option -> 5
     def loan_amount_granted(self):
@@ -196,7 +199,6 @@ class User:
 
         # A user can have multiple accounts
         self.current_user_accounts = []
-        self.__balance = 0
         self.account_number = None
 
         self.loan_ask_time = 2
@@ -233,19 +235,19 @@ class User:
 
         # * Table for displaying user data table
         self.current_user_bank_details = BeautifulTable()
-        self.current_user_bank_details.columns.header = ["Name", "Password", "Email", "Address", "Account Type", "Account Number", "Balance"]
+        self.current_user_bank_details.columns.header = ["Name", "Password", "Email", "Address", "Account Type", "Account Number"]
         self.current_user_bank_details.set_style((BeautifulTable.STYLE_BOX_DOUBLED))
 
         # * List of user accounts details table 
         self.user_accounts_tables = []
-        
+
         # * Table for display user transaction history table
         self.current_uesr_transaction_history = BeautifulTable()
         self.current_uesr_transaction_history.columns.header = ["Transaction Time", "Type of Transaction", "Amount"]
 
 
     def user_options(self, option_list:list):
-        
+
         receive_option_list = option_list
         user_options = [inquirer.List("receive_option_list", message="Choice: ", choices = receive_option_list)]
         answers = inquirer.prompt(user_options)
@@ -270,7 +272,7 @@ class User:
                 if user_name == item[0] and user_password == item[1]:
                     isSuccessfulAuthentication = True
                     # ^ tracking the current user
-                    current_user_flag = item[5]
+                    bank_manager.current_user_flag = item[5]
                     break
 
                 console.print(f"[green underline]Authentication successful!!\nWelcome {user_name}\n[/]")
@@ -307,22 +309,16 @@ class User:
             account_type_selected_option = self.user_options(self.account_type_options)
             current_user_account_details.append(account_type_selected_option)
 
+            # ^ generate random account number for new user
             self.account_number = secrets.token_hex(5)
+
             # ^ current user
-            current_user_flag = self.account_number
+            bank_manager.current_user_flag = self.account_number
             current_user_account_details.append(self.account_number)
 
-            # ~ deposite money is must when you creates new account
-            while True:
-                new_account_deposite_money = float(input("Deposite money to create account (not less than 1000 taka): "))
-                if new_account_deposite_money >= 1000:
-                    self.__balance += new_account_deposite_money
-                    current_user_account_details.append(self.__balance)
-                    break
-
             # collecting all user details in a tuple to show in a table
-            self.current_user_bank_details.rows.append([user_name, "●●●●●", user_email, user_address, account_type_selected_option, self.account_number, str(self.__balance) + " Taka"])
-        
+            self.current_user_bank_details.rows.append([user_name, "●●●●●", user_email, user_address, account_type_selected_option, self.account_number])
+
             # Store account details table in list 
             self.user_accounts_tables.append(self.current_user_bank_details)
 
@@ -358,13 +354,18 @@ class User:
                 current_user_index = index
                 flag = True
                 break
-    
+        
+        # ^ adding two more fields
+        # * at index 6 for tracking balance 
+        current_user.append(0)
+        # * at index 7 for tracking history
+        current_user.append([])
+
         if not flag:
             print("No such user exist")
             return
 
         while flag:
-            
             selected_transaction_option = self.user_options(self.transaction_options)
             current_transaction = ()
 
@@ -383,10 +384,7 @@ class User:
                 self.current_uesr_transaction_history.rows.append([transaction_time, selected_transaction_option, str(deposite_amount) + " Taka"])
 
                 # * Adding history to main bank account to track later
-                if len(current_user) - 1 < 7:
-                    current_user.append([])
                 current_user[7].append(current_transaction)
-
 
                 # * Display currently happened transaction in table
                 console.print(f"[bold green]Your transaction transcript is below")
@@ -458,7 +456,7 @@ class User:
     def check_all_transaction_history(self, user_index):
         current_user = bank_manager.all_user_vault[user_index]
 
-        if len(current_user) < 8:
+        if not current_user[7]:
             console.print("[bold red]You have no transactional history[/]\n")
             return
 
