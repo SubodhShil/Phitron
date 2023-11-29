@@ -23,7 +23,6 @@ class Bank:
             "Admin",
             "User",
             "Employee",
-            "See all accounts",
             "Exit Application"
         ]
 
@@ -51,11 +50,9 @@ class Bank:
 
             elif allUserSelectedOption == authOptions[2]:
                 print(f"Not implemented yet")
+                return
 
-            elif allUserSelectedOption == authOptions[3]:
-                bank_user.current_user_accounts()
-
-            elif allUserSelectedOption == authOptions[-1]:
+            else:
                 console.print(f"[bold red]Thanks for using our bank, see you soon!![/]")
                 exit()
 
@@ -79,7 +76,7 @@ class Admin:
         self.password = "admin"
 
         # ^ User bank details -> stores user accounts
-        # ~ structure: [{userName:key, [password, email:str, address:str, account_type, account_number]:value}]
+        # * structure (array of array): [ [userName, password, email, address, account_type, account_number, total_balance] ]
         self.all_user_vault = []
 
         # ^ Bank reserve: Assuming the bank has 1M taka initially 
@@ -87,7 +84,7 @@ class Admin:
 
         self.is_loan_active = True
 
-        self.is_bankrupt = True
+        self.is_bankrupt = False
 
         self.maximum_loan_ask_time = 2
         
@@ -143,39 +140,35 @@ class Admin:
     # * Admin option -> 2
     def delete_user_account(self):
 
-        console.print(f"[green underline]\nCurrently have {len(self.all_user_vault)} users[/]")
         if len(self.all_user_vault) == 0:
+            print(f"Can't delete account, currently there are 0 account.")
             return
-        
+
         target_account_name = input("Enter account name you want to delete: ")
         target_account_number = input("Enter account number: ")
         flag = False
 
-        for index, item in enumerate(self.all_user_vault):
-            for key, value in item.items():
-                if key == target_account_name and value[4] == target_account_number:
-                    print(f"Details found: {value}")
-                    del self.all_user_vault[index]
-                    flag = True
-                    break
+        for item in self.all_user_vault:
+            if target_account_name == item[0] and target_account_number == item[5]:
+                print(f"Details found: {item}")
+                self.all_user_vault.remove(item)
+                flag = True
+                break
 
         if flag == True:
-            console.print(f"[red bold]Account found, deleting.\nCurrent have {len(self.all_user_vault)} users\n[/]")
+            console.print(f"[red bold]Account found, deleting.\nCurrently have {len(self.all_user_vault)} users\n[/]")
         else:
             print("No such account found")
-        
+
 
     # * Admin option -> 3
     def see_all_user_accounts(self):
-    
         console.print(f"Currently there are {len(self.all_user_vault)} accounts")
 
-        for index, item in enumerate(self.all_user_vault):
-            for key, value in item.items():
-                console.print(f"[bold yellow]User {index + 1}: {key} 👉 {value}[/]")
+        for index, value in enumerate(self.all_user_vault):
+            console.print(f"[bold yellow]User {index + 1} 👉\t{value}[/]")
 
         print("")
-
 
     # * Admin option -> 4
     def see_bank_reserve(self):
@@ -200,9 +193,6 @@ class Admin:
 # ** User class
 class User:
     def __init__(self) -> None:
-
-        # ~ Current user credentials
-        self.current_user_vault:dict = {}
 
         # A user can have multiple accounts
         self.current_user_accounts = []
@@ -243,7 +233,7 @@ class User:
 
         # * Table for displaying user data table
         self.current_user_bank_details = BeautifulTable()
-        self.current_user_bank_details.columns.header = ["Name", "Password", "Email", "Address", "Account Type", "Account Number"]
+        self.current_user_bank_details.columns.header = ["Name", "Password", "Email", "Address", "Account Type", "Account Number", "Balance"]
         self.current_user_bank_details.set_style((BeautifulTable.STYLE_BOX_DOUBLED))
 
         # * List of user accounts details table 
@@ -264,10 +254,6 @@ class User:
         return user_selected_option
 
 
-    # * User -> (3)
-    def generate_account_number(self):
-        return secrets.token_hex(5)
-
     # * User -> (1)
     def user_menu(self):
         console.print(f"[bold orchid]\nWelcome to the User Menu[/]")
@@ -277,71 +263,76 @@ class User:
 
         # * For user log in
         if auth_selected_option == self.auth_options[0]:
-            userName = input(f"Enter User Name: ")
+            user_name = input(f"Enter User Name: ")
             userPassword = pwinput.pwinput("Enter User Password: ")
 
             for item in bank_manager.all_user_vault:
-                for key, value in item.items():
-                    if key == userName and value[0] == userPassword:
-                        isSuccessfulAuthentication = True
-                        break
+                if user_name == item[0] and userPassword == item[1]:
+                    isSuccessfulAuthentication = True
+                    break
 
             if isSuccessfulAuthentication == True:
-                console.print(f"[green underline]Authentication successful!!\nWelcome {userName}\n[/]")
+                console.print(f"[green underline]Authentication successful!!\nWelcome {user_name}\n[/]")
                 self.financial_transactions()
             else:
                 console.print(f"[bold red underline]False credentials, no such user exist\n[/]")
+                Bank.main_menu()
 
         # * For user sign up or creating new account
         elif auth_selected_option == self.auth_options[1]:
-            
-            # list for storing pass, email, address, account_type, account_number
-            user_account_details = []
 
-            userName = input(f"Enter User Name: ")
+            # list for storing user_name, pass, email, address, account_type, account_number
+            current_user_account_details = []
+
+            user_name = input(f"Enter User Name: ")
             for item in bank_manager.all_user_vault:
-                while userName in item:
+                while user_name == item[0]:
                     print(f"The username is taken, try another")
-                    userName = input(f"Enter another username: ")
+                    user_name = input(f"Enter another username: ")
+            current_user_account_details.append(user_name)
 
             userPassword = pwinput.pwinput("Enter User Password: ")
-            user_account_details.append(userPassword)
+            current_user_account_details.append(userPassword)
 
-            userEmail = input("Enter your email: ")
-            user_account_details.append(userEmail)
+            user_email = input("Enter your email: ")
+            current_user_account_details.append(user_email)
 
-            userAddress = input("Enter your address: ")
-            user_account_details.append(userAddress)
+            user_address = input("Enter your address: ")
+            current_user_account_details.append(user_address)
 
             # * Choose account type
             console.print(f"[bold green]\nEnter your suitable account type[/]")
             
             account_type_selected_option = self.user_options(self.account_type_options)
-            user_account_details.append(account_type_selected_option)
+            current_user_account_details.append(account_type_selected_option)
 
-            # generate account number and store to the list
-            self.account_number = self.generate_account_number()
-            user_account_details.append(self.account_number)
-
-            # storing new user data to the dictionary
-            self.current_user_vault[userName] = user_account_details
+            self.account_number = secrets.token_hex(5)
+            current_user_account_details.append(self.account_number)
+            
+            # deposite money
+            while True:
+                new_account_deposite_money = float(input("Deposite money to create account (not less than 1000 taka): "))
+                if new_account_deposite_money >= 1000.0:
+                    self.__balance += new_account_deposite_money
+                    current_user_account_details.append(self.__balance)
+                    break
 
             # collecting all user details in a tuple to show in a table
-            self.current_user_bank_details.rows.append([userName, "●●●●●", userEmail, userAddress, account_type_selected_option, self.account_number])
-            
+            self.current_user_bank_details.rows.append([user_name, "●●●●●", user_email, user_address, account_type_selected_option, self.account_number, self.__balance])
+        
             # Store account details table in list 
             self.user_accounts_tables.append(self.current_user_bank_details)
-            
+
             # Display account details in table 
             print(self.current_user_bank_details)
 
-            # ! Now store new current user to the allUserVault
-            bank_manager.all_user_vault.append(self.current_user_vault)
+            # ! Now store new current user to the all_user_vault
+            bank_manager.all_user_vault.append(current_user_account_details)
             isSuccessfulAuthentication = True
 
-            self.current_user_accounts.append(self.current_user_vault)
+            self.current_user_accounts.append(current_user_account_details)
 
-            console.print(f"[bold yellow]\nThanks for choosing us for your service {userName}\n[/]")
+            console.print(f"[bold yellow]\nThanks for choosing us for your service {user_name}\n[/]")
 
             if isSuccessfulAuthentication == True:
                 self.financial_transactions()
@@ -350,7 +341,7 @@ class User:
             Bank.main_menu()
 
         else:
-            console.print(f"[bold red]\nExiting the application[/]")
+            exit_application()
 
     # & This method supervise all user deposite, withdraw and error regarding it
     def financial_transactions(self):
@@ -378,7 +369,7 @@ class User:
                 console.print(f"[bold green]Your transaction transcript is below")
                 print(self.current_uesr_transaction_history)
 
-                console.print(f"[bold green]After deposite your total balance: {self.__balance} taka[/]")
+                console.print(f"[bold green]After deposite your total balance: {self.__balance} taka\n[/]")
 
             elif selected_transaction_option == self.transaction_options[1]:
                 
@@ -404,7 +395,7 @@ class User:
 
                     console.print(f"[yellow]You have withdrawn amount: {withdrawal_amount} taka\nCurrent balance: {self.__balance}")
                 else:
-                    console.print(f"[bold red underline]Withdrawal amount exceeded")
+                    console.print(f"[bold red underline]Your current balance is: {self.__balance} taka, You can't withdraw {withdrawal_amount} taka\n[/]")
 
             elif selected_transaction_option == self.transaction_options[2]:
                 self.check_transaction_history()
@@ -425,8 +416,7 @@ class User:
                 self.user_menu()
             
             else:
-                print(f"Exiting the application")
-                exit()
+                exit_application(0)
 
 
     # * User -> (4)
@@ -472,25 +462,16 @@ class User:
     def money_transfer(self):
         receiver_name = input("Enter receiver account name: ")
         receiver_account_number = input("Enter receiver account number: ")
-        
+
         for item in bank_manager.all_user_vault:
-            
-            # key is a dictionary
-            for key in item:
-        
-                if key == receiver_name and item[key][4] == receiver_account_number:
-                    print(f"Receiver account found")
-                    send_amount = float(input("Enter amount: "))
-                    if self.__balance >= send_amount:
-                        self.__balance -= send_amount
-                        console.print(f"[bold green]\nMoney transfer successful!![/]")
-                    else:
-                        print(f"You don't have sufficient amount to send money")
-                    
+                if receiver_name == item[0] and receiver_account_number == item[5]:
+                    console.print(f"[bold green]\nMoney transfer successful!![/]")
+                else:
+                    print(f"You don't have sufficient amount to send money")
                     self.user_options(self.transaction_options)
 
-            console.print("[bold red]Account does not exist[/]")
-            self.user_options(self.transaction_options)
+        console.print("[bold red]Account does not exist[/]")
+        self.user_options(self.transaction_options)
 
     def displayUserDetails(self):
 
