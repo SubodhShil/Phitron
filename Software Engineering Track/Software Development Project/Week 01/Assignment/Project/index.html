@@ -15,12 +15,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/d8034253a9.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
     <!-- * Navbar section -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary p-3" id="navbar">
 
         <div class="container-fluid">
             <a class="navbar-brand fs-2 fw-bold text-white" href="#">AppleShop</a>
@@ -44,7 +47,7 @@
                 </ul>
                 <form class="d-flex gap-2" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success text-white" type="submit">Search</button>
+                    <button id="searchBtn" class="btn" type="submit">Search</button>
 
                     <div class="d-flex gap-3">
                         <a href="#" class="d-inline-block rounded-circle p-2 bg-white">
@@ -92,8 +95,132 @@
 
 
     <!-- * Gallery -->
-    <section id="gallery">
+    <section id="gallery" class="d-lg-flex">
 
+        <div id="left-div" class="col-lg-5 p-3">
+
+            <div class="d-lg-flex flex-row-reverse">
+
+                <div class="d-lg-flex flex-column justify-content-center">
+                    <h2>iPad 9</h2>
+                    <p>
+                        Experience unparalleled performance with our latest iPad collection. Stunning visuals, powerful
+                        features, and seamless functionality await. Elevate your productivity and entertainment with our
+                        top-notch iPad selection today!
+                    </p>
+                </div>
+
+                <div>
+                    <img src="./Media/ipad.png" alt="" class="w-100">
+                </div>
+
+            </div>
+
+            <div class="col-lg-5 p-3 w-100">
+
+                <div class="d-lg-flex gap-3">
+
+                    <div class="d-lg-flex flex-column col-lg-8 justify-content-center mt-5">
+                        <h2>Apple AirPods <span class="fw-bold">Max</span></h2>
+                        <p>Introducing the AirPods Max – your gateway to immersive sound experiences. Crafted with
+                            precision, these premium headphones deliver exceptional audio quality and unparalleled
+                            comfort. Dive into rich, dynamic soundscapes with adaptive EQ and active noise cancellation,
+                            while the breathable knit mesh canopy and memory foam ear cushions ensure all-day comfort.
+                            Elevate your listening journey with the AirPods Max.
+                        </p>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <img src="./Media/headset.png" alt="" class="w-100">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="right-div" class="col-lg-7 p-3 d-lg-flex rounded-bottom">
+            <div class="d-lg-flex flex-column justify-content-around col-lg-7">
+                <h1 class="">Macbook <span class="fw-bold">Air</span></h1>
+                <p class="text-black">
+                    The MacBook Air is a sleek and powerful laptop designed for ultimate portability and performance.
+                    With its stunning Retina display, fast and efficient M1 chip, and all-day battery life, it's perfect
+                    for work or play. Its lightweight design and impressive features make it a go-to choice for users
+                    seeking a blend of style and functionality. Experience the brilliance of the MacBook Air, whether
+                    you're a creative professional, student, or anyone in pursuit of cutting-edge technology. Elevate
+                    your productivity and creativity with the MacBook Air, your ideal companion for seamless computing
+                    on the go.
+                </p>
+
+                <div>
+                    <button type="button" class="fit-content btn btn-primary">Shop Now</button>
+                </div>
+            </div>
+
+            <div class="d-lg-flex justify-content-center align-items-center">
+                <div class="col-lg-5 w-100 mt-5">
+                    <img src="./Media/Macbook-air.png" alt="" class="w-100">
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- * Browse by category -->
+    <section id="browse-category" class="mt-5 p-4">
+
+        <div>
+            <div>
+                <h4>Browse By Category</h4>
+            </div>
+
+        </div>
+
+        <div id="category-group" class="mt-5">
+            <div>
+                <img style="margin-left: 25px;" src="./Media/phone_.png" alt="">
+                <p>Phones</p>
+            </div>
+            <div>
+                <img src="./Media/smartwatch_.png" alt="">
+                <p>Smart Watches</h>
+            </div>
+            <div>
+                <img src="./Media/camera_.png" alt="">
+                <p>Camera</h>
+            </div>
+            <div>
+                <img src="./Media/headphone_.png" alt="">
+                <p>Headphone</h>
+            </div>
+            <div>
+                <img src="./Media/desktop-computer_.png" alt="">
+                <p>Computer</h>
+            </div>
+            <div>
+                <img src="./Media/videogame_.png" alt="">
+                <p>Gaming</h>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- * Arrival section -->
+    <section>
 
     </section>
 

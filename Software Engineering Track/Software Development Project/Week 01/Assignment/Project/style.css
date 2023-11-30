@@ -28,7 +28,22 @@ body::-webkit-scrollbar-thumb {
 }
 
 #navbar {
-    background-color: #1a187a !important;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+        90deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(9, 9, 121, 1) 35%,
+        rgba(0, 212, 255, 1) 100%
+    );
+}
+
+#searchBtn {
+    background-color: #03012c;
+    color: white !important;
+}
+
+#searchBtn:hover {
+    color: white !important;
 }
 
 .carousel-item {
@@ -54,4 +69,40 @@ body::-webkit-scrollbar-thumb {
     font-family: "Poppins" !important;
     font-size: 60px;
     transform: translate(-50%, -50%);
+}
+
+#right-div {
+    background-color: #9ad0c2 !important;
+    color: white;
+}
+
+#gallery > #right-div {
+    background-color: #ededed;
+}
+
+#browse-category {
+    background-color: #EEF5FF;
+}
+
+#category-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+#category-group > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 155px;
+    width: 155px;
+    border-radius: 10px;
+    background-color: #9EB8D9;
+    text-align: center;
+    padding-top: 20px;
+    color: black;
 }
