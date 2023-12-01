@@ -1,3 +1,6 @@
+-- To create a database 
+CREATE DATABASE db_name;
+
 -- The query let us use an existing table from the database
 USE test;
 

@@ -81,10 +81,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 #browse-category {
-    background-color: #EEF5FF;
+    background-color: #eef5ff;
 }
 
-#category-group {
+#category-group,
+#card-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -101,8 +102,90 @@ body::-webkit-scrollbar-thumb {
     height: 155px;
     width: 155px;
     border-radius: 10px;
-    background-color: #9EB8D9;
+    background-color: #9eb8d9;
     text-align: center;
     padding-top: 20px;
     color: black;
+    font-weight: bolder;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 260px;
+    padding: 15px;
+    color: white !important;
+    border-radius: 10px !important;
+    background-color: #363062 !important;
+}
+
+.card > div {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card p {
+    font-size: 15px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.card h6 {
+    font-style: italic;
+    font-size: 25px;
+}
+
+.card > button {
+    border: none;
+    width: 150px;
+    margin-top: 15px;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #eeeeee !important;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+#sale-section {
+    background-color: #958ad4;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+#sale-section > div:nth-child(3) {
+    
+}
+
+#sale-ad-text {
+    font-size: 60px;
+}
+
+#sale-ad-text > span:nth-child(1) {
+    color: #25177b;
+}
+
+footer > * {
+    background-color: #0e071b !important;
+    color: white;
+}
+
+.product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product-list a {
+    color: white;
+}
+
+#social-media-icon > a > img {
+    height: 50px;
+    width: 50px;
+    color: white;
 }

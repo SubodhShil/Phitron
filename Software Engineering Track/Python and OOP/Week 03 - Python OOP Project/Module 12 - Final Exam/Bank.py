@@ -512,8 +512,6 @@ class User:
         if not isExist:
             console.print("[bold red]Account does not exist[/]\n")
 
-        # self.user_options(self.transaction_options)
-
     def displayUserDetails(self):
 
         if self.current_user_accounts.size() >= 1:
