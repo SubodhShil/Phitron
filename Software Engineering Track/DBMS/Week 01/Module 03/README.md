@@ -85,3 +85,7 @@ Now you want to select all the names having 'ANA', to do this you can write quer
 WHERE Name = 'ANA'
 WHERE Name LIKE '%ANA%'
 ```
+
+### AS
+AS represent alias of a particular field or multiple field name.
+
