@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Lato:wght@300;400;700&family=Montserrat:wght@200;300;400;500&family=Poppins:wght@100;200;300;400&family=Roboto:wght@300;400&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
+            font-family: 'Lato', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="header">Hello DOM Manipulation</h1>
+    <h1 class="header">This is a new journey</h1>
+    <h1 class="header">So, don't worry</h1>
+
+    <h2 id="h2-tag">The world should be free from Adharma</h2>
+
+    <img id="img" src="" alt="">
+
+    <br>
+    <label for="">Say something: </label>
+    <input onblur="inputChange()" id="input" type="text">
+
+    <div id="parent-div">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+
+        <div class="test">
+            <h1>Test Div</h1>
+        </div>
+    </div>
+
+    <button id="submit-btn">Submit</button>
+
+    <script src="./app.js"></script>
+</body>
+
+</html>

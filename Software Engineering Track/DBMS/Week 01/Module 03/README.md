@@ -38,7 +38,50 @@ FROM Employee
 WHERE Age < 30 AND SALARY > 12000;
 ```
 
+## DISTINCT, ORDER BY, LIMIT, OFFSET
+1. **DISTINCT**: This query only shows the distinct or unique data.
+   ```sql
+    SELECT DISTINCT Country 
+    FROM Suppliers
+    WHERE SupplierID > 10 and SupplierID < 20;
+   ```
+2. **ORDER BY**: To sort data in ascending or descending order. 
+3. **LIMIT**: Limits the data to be shown. LIMIT মানে কতগুলো data দেখাতে হবে ।  
+4. **OFFSET**: OFFSET বলতে কতগুলো data বাদ গেলো সেটা । 
 
+## Sequential order 
+```postgres
+SELECT
+FROM 
+WHERE 
+ORDER BY 
+LIMIT 
+OFFSET
+```
+Query লেখার সময় সবসময় এই order টা maintain করতে হবে, ধরা যাক তুমি OFFSET query লিখতে চাচ্ছো সেক্ষেত্রে OFFSET আগে উপরের query গুলোও লিখতে হবে । 
 
+## IN, NOT IN, LIKE, AS
 
+```sql
+WHERE Roll = 102
+   OR Roll = 104 
+   OR Roll = 106 
 
+-- Better way to write the same query
+WHERE Roll IN (102, 104, 106)
+```
+
+### LIKE
+Suppose you have such data
+```sql 
+ANA MONA
+ANA ANTHONY
+RAPID KARIM
+ANA SIKDER
+LAILI ANA
+```
+Now you want to select all the names having 'ANA', to do this you can write query like this: 
+```sql
+WHERE Name = 'ANA'
+WHERE Name LIKE '%ANA%'
+```
