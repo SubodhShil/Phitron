@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Lato:wght@300;400;700&family=Montserrat:wght@200;300;400;500&family=Poppins:wght@100;200;300;400&family=Roboto:wght@300;400&display=swap");
+
+* {
+    font-family: "Lato", sans-serif;
+    font-family: "Montserrat", sans-serif;
+    font-family: "Poppins", sans-serif;
+    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
+}
+
+#blog-body {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+        90deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(58, 121, 9, 1) 35%,
+        rgba(0, 212, 255, 1) 100%
+    );
+    color: ghostwhite;
+}
+
+du {
+    text-decoration-line: underline;
+    text-decoration-style: double;
+}

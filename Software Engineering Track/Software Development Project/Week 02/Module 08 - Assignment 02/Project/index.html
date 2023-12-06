@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ^ External CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- ^ Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- ^ Icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+
+    <title>SimpleTube</title>
+</head>
+
+<body id="current-page">
+
+    <!-- ^ Header section -->
+    <section class="d-flex justify-content-around p-2">
+        <div class="d-flex align-items-center">
+            <img src="./Media/Logo.png" alt="" width="180px">
+        </div>
+        <div>
+            <button type="button" class="btn btn-secondary p-1" style="font-size: 15px;">Sort By View</button>
+        </div>
+        <div>
+            <button onclick="directedBlogPage()" type="button" class="btn btn-danger p-1" style="font-size: 15px;">
+                <a href="./blog.html" class="text-decoration-none text-white">Blog</a>
+            </button>
+        </div>
+    </section>
+
+    <hr class="w-75 m-auto p-3">
+
+    <!-- ^ Category section -->
+    <section class="d-flex justify-content-center gap-3">
+        <div><button id="all-category" class="btn btn-danger">All</button></div>
+        <div><button id="music-category" class="btn btn-secondary">Music</button></div>
+        <div><button id="comedy-category" class="btn btn-secondary">Comedy</button></div>
+        <div><button id="drawing-category" class="btn btn-secondary">Drawing</button></div>
+    </section>
+
+    <!-- ^ Showing result cards -->
+    <section id="result-section" class=" gap-3 d-flex flex-wrap justify-content-center mt-5">
+
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="./app.js"></script>
+</body>
+
+</html>
