@@ -4,7 +4,7 @@ USE M3;
 
 CREATE TABLE Student
 (
-	Roll CHAR(4) PRIMARY KEY,
+    Roll CHAR(4) PRIMARY KEY,
     Name VARCHAR(50) NOT NULL,
     Email VARCHAR(30) UNIQUE,
     Address VARCHAR(255) NOT NULL DEFAULT 'Bangladesh',

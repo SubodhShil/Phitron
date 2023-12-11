@@ -25,6 +25,9 @@ Types of request: These 4 types also known as CRUD operations.
 ### **```Project vs Application```**
 একটি project অনেকগুলো application এর সমন্বয়ে তৈরি হয় । Application হলো একটি project এর ছোট অংশ এবং application project ছাড়া চলতে পারে না । 
 
+models.py file মূলত database তৈরি করার জন্য ব্যবহার করা হয় । 
+views.py file টিতে logic গুলো লেখা থাকে । 
+
 ## ```Django Installation and other commands```
 1. Globally 
 2. Virtual environment
@@ -34,4 +37,10 @@ Types of request: These 4 types also known as CRUD operations.
    4. For creating a project: ```django-admin startproject project_name```
    5. For creating an application: ```django-admin startapp app_name```  
   Caution: যখন নতুন django project বানানো হয় তখন views.py file থাকে না, এটা manually create করে নিতে হয় । 
+
+
+যখন user কোন url hit করে বা request করে তখন মূলত request টি views এর মধ্যে url এর জন্য responsible বা url এর জন্য logic গুলো যে function টিতে লেখা আছে সেখানে trigger করবে । 
+
+## Working with apps 
+একটি নতুন app create করার পর সেটাকে project এ use করার জন্য অবশ্যই settings.py file এর ভিতরের INSTALLED_APPS list টিতে app এর নামটি লিখে দিতে হবে । 
 
