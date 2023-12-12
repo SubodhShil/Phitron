@@ -9,4 +9,8 @@ templates folder এর মধ্যে আমরা HTML code গুলো ল�
 
 Best practices:  
 1. Global templates folder এর ভিতরের HTML file গুলোর নাম app folder এর নাম গুলোর মতো যেন না হয় । 
-2. 
+
+## What is Django Context
+Django তে backend (views.py) থেকে frontend (home.html) এ আমরা data গুলো dictionary আকারে পাঠাই, একেই context বলা হয় । 
+
+## Template Filtering

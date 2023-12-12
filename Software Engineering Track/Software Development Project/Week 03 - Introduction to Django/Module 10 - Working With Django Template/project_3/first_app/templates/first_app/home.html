@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Lato:wght@300;400;700&family=Montserrat:wght@200;300;400;500&family=Poppins:wght@100;200;300;400&family=Roboto:wght@300;400&display=swap');
+      * {
+        font-family: 'Inter', sans-serif;
+        font-family: 'Lato', sans-serif;
+        font-family: 'Poppins', sans-serif;
+        font-family: 'Roboto', sans-serif;
+        font-family: 'Montserrat', sans-serif;
+      }
+    </style>
+    <title>Home</title>
+  </head>
+
+  <body>
+    <h1 style="text-align: center">This is home page {{ author }}</h1>
+    <h2 style="text-align: center">My Age: {{ Age }}</h2>
+    <h2>{{ list }}</h2>
+
+    <h1>{{ list|join:' then ' }}</h1>
+
+    {% comment %}Conditional statement{% endcomment %}
+    {% if Age >= 18 %}
+      <h4>You're {{ Age }} years old, You'll get driving license</h4>
+    {% elif Age <= 10 and Age <= 19 %}
+      <h4>You'll not get the driving license</h4>
+    {% else %}
+      <h4>You're a kodomo</h4>
+    {% endif %}
+
+    {% comment %}For loop{% endcomment %}
+    {% for i in courses %}
+      <h3>Course {{ i.id }} 👉 {{ i.name }} 👉 {{ i.fee }} taka</h3>
+    {% endfor %}
+
+    <h2>Current time: {{ birthday|date:'D d M Y' }}</h2>
+
+    {% comment %}handle empty string{% endcomment %}
+    <h3>{{ test|default:'This is a empty string' }}</h3>
+    {% comment %}another way to check empty{% endcomment %}
+    <h5>Length is: {{ test|length }}</h5>
+
+    {% comment %} {% endcomment %}
+
+    <p>Article: {{ 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam debitis maiores dignissimos beatae fugiat ea omnis optio corrupti deleniti dolore?'|truncatewords:10 }}</p>
+  </body>
+</html>
