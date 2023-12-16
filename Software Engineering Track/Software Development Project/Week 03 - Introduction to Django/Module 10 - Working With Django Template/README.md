@@ -14,3 +14,6 @@ Best practices:
 Django তে backend (views.py) থেকে frontend (home.html) এ আমরা data গুলো dictionary আকারে পাঠাই, একেই context বলা হয় । 
 
 ## Template Filtering
+Follow these links to learn about Django template filtering
+1. https://www.geeksforgeeks.org/django-template-filters/
+2. https://earthly.dev/blog/django-template-filters/
