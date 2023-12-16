@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titleBlock %}
+    <title>Meal Page</title>
+{% endblock %}
+
+{% block content %}
+    <br>
+    <h1 class="text-decoration-underline">We have {{meals | length }} meals for you</h1>
+    <br>
+
+<section class="container d-flex flex-wrap justify-content-center gap-5">
+    {% for item in meals %}
+        <div class="">
+            <div class="card justify-content-center" style="width: 18rem;">
+                <img src={{item.strMealThumb}} class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h3 class="card-title fw-bold">{{ item.strMeal }}</h3>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</section>
+
+{% endblock content %}
