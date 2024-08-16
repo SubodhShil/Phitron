@@ -7,6 +7,8 @@ import secrets
 from beautifultable import BeautifulTable
 from datetime import datetime
 
+from mysqlPy import DBConnect
+
 # ^ Admin Name: Subodh, Password: admin
 
 # Rich library "console" object
@@ -324,6 +326,18 @@ class User:
 
             # Display account details in table 
             print(self.current_user_bank_details)
+            
+            # ^ storing in the database ^
+            db_connection = DBConnect(host="localhost", user="root", password="password", database="bankdb")
+
+            db_connection.insertData(
+                self.account_number,
+                user_name,
+                user_password,
+                user_email,
+                account_type_selected_option,
+                user_address
+            )
 
             # ! Now store new current user to the all_user_vault
             bank_manager.all_user_vault.append(current_user_account_details)
