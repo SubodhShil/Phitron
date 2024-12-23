@@ -48,4 +48,4 @@ DESCRIBE Students;
 EXPLAIN Students;
 
 -- To display a specific table
-SELECT * FROM students;
+SELECT * FROM students; 
